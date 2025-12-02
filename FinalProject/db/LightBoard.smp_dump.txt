@@ -1,0 +1,9 @@
+
+State Machine - |LightBoard|packet:sendpacket|S
+Name S.DONE S.MARK2 S.NEXT S.DATA S.MARK1 S.BREAK 
+S.BREAK 0 0 0 0 0 0 
+S.MARK1 0 0 0 0 1 1 
+S.DATA 0 0 0 1 0 1 
+S.NEXT 0 0 1 0 0 1 
+S.MARK2 0 1 0 0 0 1 
+S.DONE 1 0 0 0 0 1 

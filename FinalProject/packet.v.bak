@@ -1,0 +1,81 @@
+module packet(
+
+	input clk,
+	input rst,
+	input send,
+	input [512:0]addr,
+	output reg pos,
+	output reg neg,
+
+);
+
+reg count;
+reg bit;
+
+parameter 
+	BREAK=3'd0, //Break between DMX packets
+	MARK1=3'd1, //Start of a packet
+	START=3'd2, //Start of a packet byte
+	DATA=3'd3,  //Bits of a packet byte
+	STOP=3'd4,  //End of a packet byte
+	MARK2=3'd5; //End of a packet
+	ERROR=3'hF; //Error
+	
+always@(posedge clk or negedge rst)
+	if(rst==1'b0)
+		S <= BREAK;
+	else
+		S <= NS;
+
+always@(*)
+	case(S)
+		
+		BREAK:
+		if(send==0)
+			NS <= BREAK;
+		else
+			NS <= MARK1;
+		
+		MARK1:
+			if(count<50000) //1 ms
+				NS <= MARK1;
+			else
+				NS <= START;
+		
+		START:
+			if(count<200) //4 us
+				NS <= START;
+			else
+				NS <= DATA;
+				
+		DATA:
+			if(count<1600) //4us
+				NS <= DATA;
+			else
+				NS <= STOP;
+				
+		STOP:
+			if(count<400) //4us
+				NS <= STOP;
+			else
+				NS <= MARK2;
+				
+		MARK2:
+			if(count<25000) //0.5ms
+				NS <= MARK2;
+			else
+				NS <= BREAK;
+	endcase
+
+always@(posedge clk or negedge rst)
+if(rst==1'b0)
+begin
+	count <= 0;
+	bit <= 0;
+	pos <= 0;
+	neg <= 0;
+end
+else
+
+
+		
