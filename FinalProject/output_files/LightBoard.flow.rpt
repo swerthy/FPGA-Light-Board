@@ -1,5 +1,5 @@
 Flow report for LightBoard
-Tue Dec  2 19:44:38 2025
+Wed Dec  3 14:10:58 2025
 Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
@@ -41,15 +41,15 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +---------------------------------+------------------------------------------------+
-; Flow Status                     ; Successful - Tue Dec  2 19:44:27 2025          ;
+; Flow Status                     ; Successful - Wed Dec  3 14:10:48 2025          ;
 ; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
 ; Revision Name                   ; LightBoard                                     ;
 ; Top-level Entity Name           ; LightBoard                                     ;
 ; Family                          ; Cyclone V                                      ;
 ; Device                          ; 5CSEMA5F31C6                                   ;
 ; Timing Models                   ; Final                                          ;
-; Logic utilization (in ALMs)     ; 1,999 / 32,070 ( 6 % )                         ;
-; Total registers                 ; 3063                                           ;
+; Logic utilization (in ALMs)     ; 342 / 32,070 ( 1 % )                           ;
+; Total registers                 ; 627                                            ;
 ; Total pins                      ; 25 / 457 ( 5 % )                               ;
 ; Total virtual pins              ; 0                                              ;
 ; Total block memory bits         ; 524,288 / 4,065,280 ( 13 % )                   ;
@@ -68,7 +68,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 12/02/2025 19:39:48 ;
+; Start date & time ; 12/03/2025 14:07:44 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; LightBoard          ;
 +-------------------+---------------------+
@@ -79,7 +79,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------------------------------+---------------+-------------+-----------------------------------+
 ; Assignment Name                     ; Value                                                          ; Default Value ; Entity Name ; Section Id                        ;
 +-------------------------------------+----------------------------------------------------------------+---------------+-------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID               ; 184978422678649.176472238810668                                ; --            ; --          ; --                                ;
+; COMPILER_SIGNATURE_ID               ; 184978422678649.176478886419204                                ; --            ; --          ; --                                ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                                            ; --            ; --          ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                                            ; --            ; --          ; eda_board_design_boundary_scan    ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                                            ; --            ; --          ; eda_board_design_signal_integrity ;
@@ -128,11 +128,11 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:37     ; 1.0                     ; 5021 MB             ; 00:00:22                           ;
-; Fitter               ; 00:03:45     ; 1.1                     ; 7950 MB             ; 00:02:37                           ;
-; Assembler            ; 00:00:05     ; 1.0                     ; 4899 MB             ; 00:00:03                           ;
-; Timing Analyzer      ; 00:00:09     ; 1.8                     ; 5389 MB             ; 00:00:06                           ;
-; Total                ; 00:04:36     ; --                      ; --                  ; 00:03:08                           ;
+; Analysis & Synthesis ; 00:01:07     ; 1.0                     ; 5322 MB             ; 00:00:46                           ;
+; Fitter               ; 00:01:39     ; 1.1                     ; 7850 MB             ; 00:01:21                           ;
+; Assembler            ; 00:00:05     ; 1.0                     ; 4878 MB             ; 00:00:02                           ;
+; Timing Analyzer      ; 00:00:08     ; 1.4                     ; 5344 MB             ; 00:00:04                           ;
+; Total                ; 00:02:59     ; --                      ; --                  ; 00:02:13                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

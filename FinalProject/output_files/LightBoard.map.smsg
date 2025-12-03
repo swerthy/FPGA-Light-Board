@@ -1,2 +1,4 @@
+Info (10281): Verilog HDL Declaration information at LightBoard.v(23): object "addr" differs only in case from object "ADDR" in the same scope File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/LightBoard.v Line: 23
+Info (10281): Verilog HDL Declaration information at LightBoard.v(24): object "val" differs only in case from object "VAL" in the same scope File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/LightBoard.v Line: 24
 Info (10281): Verilog HDL Declaration information at Packet.v(6): object "data" differs only in case from object "DATA" in the same scope File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/Packet.v Line: 6
 Info (10281): Verilog HDL Declaration information at Packet.v(10): object "done" differs only in case from object "DONE" in the same scope File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/Packet.v Line: 10
