@@ -4,9 +4,9 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Ign)
-		Device PartName(5CSEMA5F31) MfrSpec(OpMask(0) FullPath("M:/ECE287/FinalProject/output_files/LightBoard.sof"));
+		Device PartName(5CSEMA5F31) MfrSpec(OpMask(0) FullPath("M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/output_files/LightBoard.sof"));
 	P ActionCode(Cfg)
-		Device PartName(5CSEMA5F31) Path("M:/ECE287/FinalProject/output_files/") File("LightBoard.sof") MfrSpec(OpMask(1));
+		Device PartName(5CSEMA5F31) Path("M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/output_files/") File("LightBoard.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

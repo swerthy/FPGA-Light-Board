@@ -1,5 +1,5 @@
 Analysis & Synthesis report for LightBoard
-Mon Dec  1 18:50:09 2025
+Tue Dec  2 19:40:26 2025
 Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
@@ -15,22 +15,24 @@ Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
   7. Analysis & Synthesis Resource Utilization by Entity
   8. Analysis & Synthesis RAM Summary
   9. Analysis & Synthesis IP Cores Summary
- 10. State Machine - |LightBoard|packet:sendpacket|S
- 11. Registers Removed During Synthesis
- 12. Removed Registers Triggering Further Register Optimizations
- 13. General Register Statistics
- 14. Inverted Register Statistics
- 15. Multiplexer Restructuring Statistics (Restructuring Performed)
- 16. Source assignments for sld_signaltap:auto_signaltap_0
- 17. Parameter Settings for User Entity Instance: packet:sendpacket
- 18. Parameter Settings for Inferred Entity Instance: sld_signaltap:auto_signaltap_0
- 19. Port Connectivity Checks: "packet:sendpacket"
- 20. Signal Tap Logic Analyzer Settings
- 21. Post-Synthesis Netlist Statistics for Top Partition
- 22. Elapsed Time Per Partition
- 23. Connections to In-System Debugging Instance "auto_signaltap_0"
- 24. Analysis & Synthesis Messages
- 25. Analysis & Synthesis Suppressed Messages
+ 10. State Machine - |LightBoard|S
+ 11. State Machine - |LightBoard|packet:sendpacket|S
+ 12. Registers Removed During Synthesis
+ 13. Removed Registers Triggering Further Register Optimizations
+ 14. General Register Statistics
+ 15. Inverted Register Statistics
+ 16. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 17. Source assignments for sld_signaltap:auto_signaltap_0
+ 18. Parameter Settings for User Entity Instance: Top-level Entity: |LightBoard
+ 19. Parameter Settings for User Entity Instance: packet:sendpacket
+ 20. Parameter Settings for Inferred Entity Instance: sld_signaltap:auto_signaltap_0
+ 21. Port Connectivity Checks: "packet:sendpacket"
+ 22. Signal Tap Logic Analyzer Settings
+ 23. Post-Synthesis Netlist Statistics for Top Partition
+ 24. Elapsed Time Per Partition
+ 25. Connections to In-System Debugging Instance "auto_signaltap_0"
+ 26. Analysis & Synthesis Messages
+ 27. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -57,14 +59,14 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +---------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Mon Dec  1 18:50:09 2025          ;
+; Analysis & Synthesis Status     ; Successful - Tue Dec  2 19:40:26 2025          ;
 ; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
 ; Revision Name                   ; LightBoard                                     ;
 ; Top-level Entity Name           ; LightBoard                                     ;
 ; Family                          ; Cyclone V                                      ;
 ; Logic utilization (in ALMs)     ; N/A                                            ;
-; Total registers                 ; 2857                                           ;
-; Total pins                      ; 9                                              ;
+; Total registers                 ; 2875                                           ;
+; Total pins                      ; 25                                             ;
 ; Total virtual pins              ; 0                                              ;
 ; Total block memory bits         ; 524,288                                        ;
 ; Total DSP Blocks                ; 0                                              ;
@@ -183,76 +185,75 @@ https://fpgasoftware.intel.com/eula.
 ;     Processor 5            ;   0.0%      ;
 ;     Processor 6            ;   0.0%      ;
 ;     Processor 7            ;   0.0%      ;
-;     Processor 8            ;   0.0%      ;
-;     Processors 9-16        ;   0.0%      ;
+;     Processors 8-16        ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                                                          ;
-+--------------------------------------------------------------------+-----------------+----------------------------------------------+---------------------------------------------------------------------------------------------+-------------+
-; File Name with User-Entered Path                                   ; Used in Netlist ; File Type                                    ; File Name with Absolute Path                                                                ; Library     ;
-+--------------------------------------------------------------------+-----------------+----------------------------------------------+---------------------------------------------------------------------------------------------+-------------+
-; LightBoard.v                                                       ; yes             ; User Verilog HDL File                        ; M:/ECE287/FinalProject/LightBoard.v                                                         ;             ;
-; Packet.v                                                           ; yes             ; User Verilog HDL File                        ; M:/ECE287/FinalProject/Packet.v                                                             ;             ;
-; sld_signaltap.vhd                                                  ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_signaltap.vhd                 ;             ;
-; sld_signaltap_impl.vhd                                             ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_signaltap_impl.vhd            ;             ;
-; sld_ela_control.vhd                                                ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_ela_control.vhd               ;             ;
-; lpm_shiftreg.tdf                                                   ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_shiftreg.tdf                  ;             ;
-; lpm_constant.inc                                                   ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_constant.inc                  ;             ;
-; dffeea.inc                                                         ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/dffeea.inc                        ;             ;
-; aglobal231.inc                                                     ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/aglobal231.inc                    ;             ;
-; sld_mbpmg.vhd                                                      ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_mbpmg.vhd                     ;             ;
-; sld_ela_trigger_flow_mgr.vhd                                       ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_ela_trigger_flow_mgr.vhd      ;             ;
-; sld_buffer_manager.vhd                                             ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_buffer_manager.vhd            ;             ;
-; altsyncram.tdf                                                     ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altsyncram.tdf                    ;             ;
-; stratix_ram_block.inc                                              ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/stratix_ram_block.inc             ;             ;
-; lpm_mux.inc                                                        ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_mux.inc                       ;             ;
-; lpm_decode.inc                                                     ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_decode.inc                    ;             ;
-; a_rdenreg.inc                                                      ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/a_rdenreg.inc                     ;             ;
-; altrom.inc                                                         ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altrom.inc                        ;             ;
-; altram.inc                                                         ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altram.inc                        ;             ;
-; altdpram.inc                                                       ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altdpram.inc                      ;             ;
-; db/altsyncram_mk84.tdf                                             ; yes             ; Auto-Generated Megafunction                  ; M:/ECE287/FinalProject/db/altsyncram_mk84.tdf                                               ;             ;
-; db/decode_tma.tdf                                                  ; yes             ; Auto-Generated Megafunction                  ; M:/ECE287/FinalProject/db/decode_tma.tdf                                                    ;             ;
-; db/mux_9hb.tdf                                                     ; yes             ; Auto-Generated Megafunction                  ; M:/ECE287/FinalProject/db/mux_9hb.tdf                                                       ;             ;
-; altdpram.tdf                                                       ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altdpram.tdf                      ;             ;
-; memmodes.inc                                                       ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/others/maxplus2/memmodes.inc                    ;             ;
-; a_hdffe.inc                                                        ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/a_hdffe.inc                       ;             ;
-; alt_le_rden_reg.inc                                                ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/alt_le_rden_reg.inc               ;             ;
-; altsyncram.inc                                                     ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altsyncram.inc                    ;             ;
-; lpm_mux.tdf                                                        ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_mux.tdf                       ;             ;
-; muxlut.inc                                                         ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/muxlut.inc                        ;             ;
-; bypassff.inc                                                       ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/bypassff.inc                      ;             ;
-; altshift.inc                                                       ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altshift.inc                      ;             ;
-; db/mux_glc.tdf                                                     ; yes             ; Auto-Generated Megafunction                  ; M:/ECE287/FinalProject/db/mux_glc.tdf                                                       ;             ;
-; lpm_decode.tdf                                                     ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_decode.tdf                    ;             ;
-; declut.inc                                                         ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/declut.inc                        ;             ;
-; lpm_compare.inc                                                    ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_compare.inc                   ;             ;
-; db/decode_vnf.tdf                                                  ; yes             ; Auto-Generated Megafunction                  ; M:/ECE287/FinalProject/db/decode_vnf.tdf                                                    ;             ;
-; lpm_counter.tdf                                                    ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_counter.tdf                   ;             ;
-; lpm_add_sub.inc                                                    ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_add_sub.inc                   ;             ;
-; cmpconst.inc                                                       ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/cmpconst.inc                      ;             ;
-; lpm_counter.inc                                                    ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_counter.inc                   ;             ;
-; alt_counter_stratix.inc                                            ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/alt_counter_stratix.inc           ;             ;
-; db/cntr_c7i.tdf                                                    ; yes             ; Auto-Generated Megafunction                  ; M:/ECE287/FinalProject/db/cntr_c7i.tdf                                                      ;             ;
-; db/cntr_85j.tdf                                                    ; yes             ; Auto-Generated Megafunction                  ; M:/ECE287/FinalProject/db/cntr_85j.tdf                                                      ;             ;
-; db/cntr_49i.tdf                                                    ; yes             ; Auto-Generated Megafunction                  ; M:/ECE287/FinalProject/db/cntr_49i.tdf                                                      ;             ;
-; db/cmpr_e9c.tdf                                                    ; yes             ; Auto-Generated Megafunction                  ; M:/ECE287/FinalProject/db/cmpr_e9c.tdf                                                      ;             ;
-; db/cntr_kri.tdf                                                    ; yes             ; Auto-Generated Megafunction                  ; M:/ECE287/FinalProject/db/cntr_kri.tdf                                                      ;             ;
-; db/cmpr_99c.tdf                                                    ; yes             ; Auto-Generated Megafunction                  ; M:/ECE287/FinalProject/db/cmpr_99c.tdf                                                      ;             ;
-; sld_rom_sr.vhd                                                     ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_rom_sr.vhd                    ;             ;
-; sld_jtag_endpoint_adapter.vhd                                      ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_jtag_endpoint_adapter.vhd     ;             ;
-; sld_jtag_endpoint_adapter_impl.sv                                  ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_jtag_endpoint_adapter_impl.sv ;             ;
-; sld_hub.vhd                                                        ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_hub.vhd                       ; altera_sld  ;
-; db/ip/sld48c515c5/alt_sld_fab.v                                    ; yes             ; Encrypted Auto-Found Verilog HDL File        ; M:/ECE287/FinalProject/db/ip/sld48c515c5/alt_sld_fab.v                                      ; alt_sld_fab ;
-; db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab.v             ; yes             ; Encrypted Auto-Found Verilog HDL File        ; M:/ECE287/FinalProject/db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab.v               ; alt_sld_fab ;
-; db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab_ident.sv      ; yes             ; Auto-Found SystemVerilog HDL File            ; M:/ECE287/FinalProject/db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab_ident.sv        ; alt_sld_fab ;
-; db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab_presplit.sv   ; yes             ; Encrypted Auto-Found SystemVerilog HDL File  ; M:/ECE287/FinalProject/db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab_presplit.sv     ; alt_sld_fab ;
-; db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd ; yes             ; Encrypted Auto-Found VHDL File               ; M:/ECE287/FinalProject/db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd   ; alt_sld_fab ;
-; db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab_splitter.sv   ; yes             ; Encrypted Auto-Found SystemVerilog HDL File  ; M:/ECE287/FinalProject/db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab_splitter.sv     ; alt_sld_fab ;
-; sld_jtag_hub.vhd                                                   ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_jtag_hub.vhd                  ;             ;
-+--------------------------------------------------------------------+-----------------+----------------------------------------------+---------------------------------------------------------------------------------------------+-------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                                                                ;
++--------------------------------------------------------------------+-----------------+----------------------------------------------+-------------------------------------------------------------------------------------------------------------------+-------------+
+; File Name with User-Entered Path                                   ; Used in Netlist ; File Type                                    ; File Name with Absolute Path                                                                                      ; Library     ;
++--------------------------------------------------------------------+-----------------+----------------------------------------------+-------------------------------------------------------------------------------------------------------------------+-------------+
+; LightBoard.v                                                       ; yes             ; User Verilog HDL File                        ; M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/LightBoard.v                                                       ;             ;
+; Packet.v                                                           ; yes             ; User Verilog HDL File                        ; M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/Packet.v                                                           ;             ;
+; sld_signaltap.vhd                                                  ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_signaltap.vhd                                       ;             ;
+; sld_signaltap_impl.vhd                                             ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_signaltap_impl.vhd                                  ;             ;
+; sld_ela_control.vhd                                                ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_ela_control.vhd                                     ;             ;
+; lpm_shiftreg.tdf                                                   ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_shiftreg.tdf                                        ;             ;
+; lpm_constant.inc                                                   ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_constant.inc                                        ;             ;
+; dffeea.inc                                                         ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/dffeea.inc                                              ;             ;
+; aglobal231.inc                                                     ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/aglobal231.inc                                          ;             ;
+; sld_mbpmg.vhd                                                      ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_mbpmg.vhd                                           ;             ;
+; sld_ela_trigger_flow_mgr.vhd                                       ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_ela_trigger_flow_mgr.vhd                            ;             ;
+; sld_buffer_manager.vhd                                             ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_buffer_manager.vhd                                  ;             ;
+; altsyncram.tdf                                                     ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altsyncram.tdf                                          ;             ;
+; stratix_ram_block.inc                                              ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/stratix_ram_block.inc                                   ;             ;
+; lpm_mux.inc                                                        ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_mux.inc                                             ;             ;
+; lpm_decode.inc                                                     ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_decode.inc                                          ;             ;
+; a_rdenreg.inc                                                      ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/a_rdenreg.inc                                           ;             ;
+; altrom.inc                                                         ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altrom.inc                                              ;             ;
+; altram.inc                                                         ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altram.inc                                              ;             ;
+; altdpram.inc                                                       ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altdpram.inc                                            ;             ;
+; db/altsyncram_mk84.tdf                                             ; yes             ; Auto-Generated Megafunction                  ; M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/altsyncram_mk84.tdf                                             ;             ;
+; db/decode_tma.tdf                                                  ; yes             ; Auto-Generated Megafunction                  ; M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/decode_tma.tdf                                                  ;             ;
+; db/mux_9hb.tdf                                                     ; yes             ; Auto-Generated Megafunction                  ; M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/mux_9hb.tdf                                                     ;             ;
+; altdpram.tdf                                                       ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altdpram.tdf                                            ;             ;
+; memmodes.inc                                                       ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/others/maxplus2/memmodes.inc                                          ;             ;
+; a_hdffe.inc                                                        ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/a_hdffe.inc                                             ;             ;
+; alt_le_rden_reg.inc                                                ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/alt_le_rden_reg.inc                                     ;             ;
+; altsyncram.inc                                                     ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altsyncram.inc                                          ;             ;
+; lpm_mux.tdf                                                        ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_mux.tdf                                             ;             ;
+; muxlut.inc                                                         ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/muxlut.inc                                              ;             ;
+; bypassff.inc                                                       ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/bypassff.inc                                            ;             ;
+; altshift.inc                                                       ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altshift.inc                                            ;             ;
+; db/mux_glc.tdf                                                     ; yes             ; Auto-Generated Megafunction                  ; M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/mux_glc.tdf                                                     ;             ;
+; lpm_decode.tdf                                                     ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_decode.tdf                                          ;             ;
+; declut.inc                                                         ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/declut.inc                                              ;             ;
+; lpm_compare.inc                                                    ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_compare.inc                                         ;             ;
+; db/decode_vnf.tdf                                                  ; yes             ; Auto-Generated Megafunction                  ; M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/decode_vnf.tdf                                                  ;             ;
+; lpm_counter.tdf                                                    ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_counter.tdf                                         ;             ;
+; lpm_add_sub.inc                                                    ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_add_sub.inc                                         ;             ;
+; cmpconst.inc                                                       ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/cmpconst.inc                                            ;             ;
+; lpm_counter.inc                                                    ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_counter.inc                                         ;             ;
+; alt_counter_stratix.inc                                            ; yes             ; Megafunction                                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/alt_counter_stratix.inc                                 ;             ;
+; db/cntr_c7i.tdf                                                    ; yes             ; Auto-Generated Megafunction                  ; M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/cntr_c7i.tdf                                                    ;             ;
+; db/cntr_85j.tdf                                                    ; yes             ; Auto-Generated Megafunction                  ; M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/cntr_85j.tdf                                                    ;             ;
+; db/cntr_49i.tdf                                                    ; yes             ; Auto-Generated Megafunction                  ; M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/cntr_49i.tdf                                                    ;             ;
+; db/cmpr_e9c.tdf                                                    ; yes             ; Auto-Generated Megafunction                  ; M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/cmpr_e9c.tdf                                                    ;             ;
+; db/cntr_kri.tdf                                                    ; yes             ; Auto-Generated Megafunction                  ; M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/cntr_kri.tdf                                                    ;             ;
+; db/cmpr_99c.tdf                                                    ; yes             ; Auto-Generated Megafunction                  ; M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/cmpr_99c.tdf                                                    ;             ;
+; sld_rom_sr.vhd                                                     ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_rom_sr.vhd                                          ;             ;
+; sld_jtag_endpoint_adapter.vhd                                      ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_jtag_endpoint_adapter.vhd                           ;             ;
+; sld_jtag_endpoint_adapter_impl.sv                                  ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_jtag_endpoint_adapter_impl.sv                       ;             ;
+; sld_hub.vhd                                                        ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_hub.vhd                                             ; altera_sld  ;
+; db/ip/sld48c515c5/alt_sld_fab.v                                    ; yes             ; Encrypted Auto-Found Verilog HDL File        ; M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/ip/sld48c515c5/alt_sld_fab.v                                    ; alt_sld_fab ;
+; db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab.v             ; yes             ; Encrypted Auto-Found Verilog HDL File        ; M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab.v             ; alt_sld_fab ;
+; db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab_ident.sv      ; yes             ; Auto-Found SystemVerilog HDL File            ; M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab_ident.sv      ; alt_sld_fab ;
+; db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab_presplit.sv   ; yes             ; Encrypted Auto-Found SystemVerilog HDL File  ; M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab_presplit.sv   ; alt_sld_fab ;
+; db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd ; yes             ; Encrypted Auto-Found VHDL File               ; M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd ; alt_sld_fab ;
+; db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab_splitter.sv   ; yes             ; Encrypted Auto-Found SystemVerilog HDL File  ; M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab_splitter.sv   ; alt_sld_fab ;
+; sld_jtag_hub.vhd                                                   ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sld_jtag_hub.vhd                                        ;             ;
++--------------------------------------------------------------------+-----------------+----------------------------------------------+-------------------------------------------------------------------------------------------------------------------+-------------+
 
 
 +--------------------------------------------------------------+
@@ -260,27 +261,27 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimate of Logic utilization (ALMs needed) ; 1996           ;
+; Estimate of Logic utilization (ALMs needed) ; 2009           ;
 ;                                             ;                ;
-; Combinational ALUT usage for logic          ; 3338           ;
+; Combinational ALUT usage for logic          ; 3364           ;
 ;     -- 7 input functions                    ; 1              ;
-;     -- 6 input functions                    ; 497            ;
-;     -- 5 input functions                    ; 124            ;
-;     -- 4 input functions                    ; 77             ;
-;     -- <=3 input functions                  ; 2639           ;
+;     -- 6 input functions                    ; 498            ;
+;     -- 5 input functions                    ; 132            ;
+;     -- 4 input functions                    ; 78             ;
+;     -- <=3 input functions                  ; 2655           ;
 ;                                             ;                ;
-; Dedicated logic registers                   ; 2857           ;
+; Dedicated logic registers                   ; 2875           ;
 ;                                             ;                ;
-; I/O pins                                    ; 9              ;
+; I/O pins                                    ; 25             ;
 ; Total MLAB memory bits                      ; 0              ;
 ; Total block memory bits                     ; 524288         ;
 ;                                             ;                ;
 ; Total DSP Blocks                            ; 0              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 2560           ;
-; Total fan-out                               ; 23914          ;
-; Average fan-out                             ; 3.80           ;
+; Maximum fan-out                             ; 2578           ;
+; Total fan-out                               ; 24081          ;
+; Average fan-out                             ; 3.79           ;
 +---------------------------------------------+----------------+
 
 
@@ -289,7 +290,7 @@ https://fpgasoftware.intel.com/eula.
 +-----------------------------------------------------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+--------------+
 ; Compilation Hierarchy Node                                                                                                              ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                                                                                                                                                                                                    ; Entity Name                       ; Library Name ;
 +-----------------------------------------------------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+--------------+
-; |LightBoard                                                                                                                             ; 3338 (1)            ; 2857 (0)                  ; 524288            ; 0          ; 9    ; 0            ; |LightBoard                                                                                                                                                                                                                                                                                                                                            ; LightBoard                        ; work         ;
+; |LightBoard                                                                                                                             ; 3364 (27)           ; 2875 (18)                 ; 524288            ; 0          ; 25   ; 0            ; |LightBoard                                                                                                                                                                                                                                                                                                                                            ; LightBoard                        ; work         ;
 ;    |packet:sendpacket|                                                                                                                  ; 2934 (2934)         ; 2254 (2254)               ; 0                 ; 0          ; 0    ; 0            ; |LightBoard|packet:sendpacket                                                                                                                                                                                                                                                                                                                          ; packet                            ; work         ;
 ;    |sld_hub:auto_hub|                                                                                                                   ; 94 (1)              ; 90 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |LightBoard|sld_hub:auto_hub                                                                                                                                                                                                                                                                                                                           ; sld_hub                           ; altera_sld   ;
 ;       |alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric| ; 93 (0)              ; 90 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |LightBoard|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric                                                                                                                                                                                           ; alt_sld_fab_with_jtag_input       ; altera_sld   ;
@@ -364,6 +365,33 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 
 
 Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |LightBoard|S                                                                                                                                                ;
++---------+---------+-------+--------+-------+--------+--------+---------+--------+---------+--------+---------+--------+---------+-------+--------+--------+---------+--------+
+; Name    ; S.SHIFT ; S.SET ; S.SETX ; S.QGO ; S.QGOX ; S.RECQ ; S.RECQX ; S.TIME ; S.TIMEX ; S.QNUM ; S.QNUMX ; S.RECA ; S.RECAX ; S.VAL ; S.VALX ; S.ADDR ; S.ADDRX ; S.HOME ;
++---------+---------+-------+--------+-------+--------+--------+---------+--------+---------+--------+---------+--------+---------+-------+--------+--------+---------+--------+
+; S.HOME  ; 0       ; 0     ; 0      ; 0     ; 0      ; 0      ; 0       ; 0      ; 0       ; 0      ; 0       ; 0      ; 0       ; 0     ; 0      ; 0      ; 0       ; 0      ;
+; S.ADDRX ; 0       ; 0     ; 0      ; 0     ; 0      ; 0      ; 0       ; 0      ; 0       ; 0      ; 0       ; 0      ; 0       ; 0     ; 0      ; 0      ; 1       ; 1      ;
+; S.ADDR  ; 0       ; 0     ; 0      ; 0     ; 0      ; 0      ; 0       ; 0      ; 0       ; 0      ; 0       ; 0      ; 0       ; 0     ; 0      ; 1      ; 0       ; 1      ;
+; S.VALX  ; 0       ; 0     ; 0      ; 0     ; 0      ; 0      ; 0       ; 0      ; 0       ; 0      ; 0       ; 0      ; 0       ; 0     ; 1      ; 0      ; 0       ; 1      ;
+; S.VAL   ; 0       ; 0     ; 0      ; 0     ; 0      ; 0      ; 0       ; 0      ; 0       ; 0      ; 0       ; 0      ; 0       ; 1     ; 0      ; 0      ; 0       ; 1      ;
+; S.RECAX ; 0       ; 0     ; 0      ; 0     ; 0      ; 0      ; 0       ; 0      ; 0       ; 0      ; 0       ; 0      ; 1       ; 0     ; 0      ; 0      ; 0       ; 1      ;
+; S.RECA  ; 0       ; 0     ; 0      ; 0     ; 0      ; 0      ; 0       ; 0      ; 0       ; 0      ; 0       ; 1      ; 0       ; 0     ; 0      ; 0      ; 0       ; 1      ;
+; S.QNUMX ; 0       ; 0     ; 0      ; 0     ; 0      ; 0      ; 0       ; 0      ; 0       ; 0      ; 1       ; 0      ; 0       ; 0     ; 0      ; 0      ; 0       ; 1      ;
+; S.QNUM  ; 0       ; 0     ; 0      ; 0     ; 0      ; 0      ; 0       ; 0      ; 0       ; 1      ; 0       ; 0      ; 0       ; 0     ; 0      ; 0      ; 0       ; 1      ;
+; S.TIMEX ; 0       ; 0     ; 0      ; 0     ; 0      ; 0      ; 0       ; 0      ; 1       ; 0      ; 0       ; 0      ; 0       ; 0     ; 0      ; 0      ; 0       ; 1      ;
+; S.TIME  ; 0       ; 0     ; 0      ; 0     ; 0      ; 0      ; 0       ; 1      ; 0       ; 0      ; 0       ; 0      ; 0       ; 0     ; 0      ; 0      ; 0       ; 1      ;
+; S.RECQX ; 0       ; 0     ; 0      ; 0     ; 0      ; 0      ; 1       ; 0      ; 0       ; 0      ; 0       ; 0      ; 0       ; 0     ; 0      ; 0      ; 0       ; 1      ;
+; S.RECQ  ; 0       ; 0     ; 0      ; 0     ; 0      ; 1      ; 0       ; 0      ; 0       ; 0      ; 0       ; 0      ; 0       ; 0     ; 0      ; 0      ; 0       ; 1      ;
+; S.QGOX  ; 0       ; 0     ; 0      ; 0     ; 1      ; 0      ; 0       ; 0      ; 0       ; 0      ; 0       ; 0      ; 0       ; 0     ; 0      ; 0      ; 0       ; 1      ;
+; S.QGO   ; 0       ; 0     ; 0      ; 1     ; 0      ; 0      ; 0       ; 0      ; 0       ; 0      ; 0       ; 0      ; 0       ; 0     ; 0      ; 0      ; 0       ; 1      ;
+; S.SETX  ; 0       ; 0     ; 1      ; 0     ; 0      ; 0      ; 0       ; 0      ; 0       ; 0      ; 0       ; 0      ; 0       ; 0     ; 0      ; 0      ; 0       ; 1      ;
+; S.SET   ; 0       ; 1     ; 0      ; 0     ; 0      ; 0      ; 0       ; 0      ; 0       ; 0      ; 0       ; 0      ; 0       ; 0     ; 0      ; 0      ; 0       ; 1      ;
+; S.SHIFT ; 1       ; 0     ; 0      ; 0     ; 0      ; 0      ; 0       ; 0      ; 0       ; 0      ; 0       ; 0      ; 0       ; 0     ; 0      ; 0      ; 0       ; 1      ;
++---------+---------+-------+--------+-------+--------+--------+---------+--------+---------+--------+---------+--------+---------+-------+--------+--------+---------+--------+
+
+
+Encoding Type:  One-Hot
 +------------------------------------------------------------------+
 ; State Machine - |LightBoard|packet:sendpacket|S                  ;
 +---------+--------+---------+--------+--------+---------+---------+
@@ -383,12 +411,16 @@ Encoding Type:  One-Hot
 +------------------------------------------+----------------------------------------+
 ; Register name                            ; Reason for Removal                     ;
 +------------------------------------------+----------------------------------------+
-; packet:sendpacket|neg                    ; Stuck at GND due to stuck port data_in ;
 ; packet:sendpacket|sends[2222..5642]      ; Stuck at GND due to stuck port data_in ;
+; S~4                                      ; Lost fanout                            ;
+; S~5                                      ; Lost fanout                            ;
+; S~6                                      ; Lost fanout                            ;
+; S~7                                      ; Lost fanout                            ;
+; S~8                                      ; Lost fanout                            ;
 ; packet:sendpacket|S~4                    ; Lost fanout                            ;
 ; packet:sendpacket|S~5                    ; Lost fanout                            ;
 ; packet:sendpacket|S~6                    ; Lost fanout                            ;
-; Total Number of Removed Registers = 3425 ;                                        ;
+; Total Number of Removed Registers = 3429 ;                                        ;
 +------------------------------------------+----------------------------------------+
 
 
@@ -1009,10 +1041,10 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 2857  ;
-; Number of registers using Synchronous Clear  ; 163   ;
+; Total registers                              ; 2875  ;
+; Number of registers using Synchronous Clear  ; 173   ;
 ; Number of registers using Synchronous Load   ; 1785  ;
-; Number of registers using Asynchronous Clear ; 2488  ;
+; Number of registers using Asynchronous Clear ; 2506  ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 1031  ;
 ; Number of registers using Preset             ; 0     ;
@@ -1134,8 +1166,8 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------+
-; 4:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |LightBoard|packet:sendpacket|count[0]    ;
-; 3:1                ; 603 bits  ; 1206 LEs      ; 603 LEs              ; 603 LEs                ; Yes        ; |LightBoard|packet:sendpacket|sends[2221] ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |LightBoard|packet:sendpacket|count[9]    ;
+; 3:1                ; 603 bits  ; 1206 LEs      ; 603 LEs              ; 603 LEs                ; Yes        ; |LightBoard|packet:sendpacket|sends[2022] ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------+
 
 
@@ -1146,6 +1178,34 @@ Encoding Type:  One-Hot
 +-----------------+-------+------+----------------------+
 ; MESSAGE_DISABLE ; 13410 ; -    ; -                    ;
 +-----------------+-------+------+----------------------+
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |LightBoard ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; HOME           ; 00000 ; Unsigned Binary                                   ;
+; ADDRX          ; 00001 ; Unsigned Binary                                   ;
+; ADDR           ; 00010 ; Unsigned Binary                                   ;
+; VALX           ; 00011 ; Unsigned Binary                                   ;
+; VAL            ; 00100 ; Unsigned Binary                                   ;
+; RECAX          ; 00101 ; Unsigned Binary                                   ;
+; RECA           ; 00110 ; Unsigned Binary                                   ;
+; QNUMX          ; 00111 ; Unsigned Binary                                   ;
+; QNUM           ; 01000 ; Unsigned Binary                                   ;
+; TIMEX          ; 01001 ; Unsigned Binary                                   ;
+; TIME           ; 01010 ; Unsigned Binary                                   ;
+; RECQX          ; 01011 ; Unsigned Binary                                   ;
+; RECQ           ; 01100 ; Unsigned Binary                                   ;
+; QGOX           ; 01101 ; Unsigned Binary                                   ;
+; QGO            ; 01110 ; Unsigned Binary                                   ;
+; SETX           ; 01111 ; Unsigned Binary                                   ;
+; SET            ; 10000 ; Unsigned Binary                                   ;
+; SHIFT          ; 10001 ; Unsigned Binary                                   ;
+; ERROR          ; 11111 ; Unsigned Binary                                   ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
 +----------------------------------------------------------------+
@@ -1657,26 +1717,27 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 2254                        ;
-;     CLR               ; 16                          ;
+; arriav_ff             ; 2272                        ;
+;     CLR               ; 24                          ;
+;     CLR SCLR          ; 10                          ;
 ;     CLR SLD           ; 1619                        ;
 ;     ENA CLR           ; 603                         ;
 ;     ENA CLR SCLR      ; 16                          ;
-; arriav_lcell_comb     ; 2935                        ;
+; arriav_lcell_comb     ; 2962                        ;
 ;     arith             ; 24                          ;
 ;         1 data inputs ; 24                          ;
-;     normal            ; 2911                        ;
+;     normal            ; 2938                        ;
 ;         0 data inputs ; 1                           ;
-;         1 data inputs ; 202                         ;
-;         2 data inputs ; 2227                        ;
+;         1 data inputs ; 203                         ;
+;         2 data inputs ; 2243                        ;
 ;         3 data inputs ; 2                           ;
-;         4 data inputs ; 32                          ;
-;         5 data inputs ; 37                          ;
-;         6 data inputs ; 410                         ;
-; boundary_port         ; 9                           ;
+;         4 data inputs ; 33                          ;
+;         5 data inputs ; 45                          ;
+;         6 data inputs ; 411                         ;
+; boundary_port         ; 25                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 5.00                        ;
-; Average LUT depth     ; 3.02                        ;
+; Average LUT depth     ; 3.00                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1685,7 +1746,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:14     ;
+; Top            ; 00:00:16     ;
 +----------------+--------------+
 
 
@@ -1697,10 +1758,10 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; CLOCK_50             ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; CLOCK_50                            ; N/A     ;
 ; LEDR[0]              ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; packet:sendpacket|pos               ; N/A     ;
 ; LEDR[0]              ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; packet:sendpacket|pos               ; N/A     ;
-; LEDR[1]              ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; ~GND                                ; N/A     ;
-; LEDR[1]              ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; ~GND                                ; N/A     ;
-; LEDR[2]              ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; packet:sendpacket|done              ; N/A     ;
-; LEDR[2]              ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; packet:sendpacket|done              ; N/A     ;
+; LEDR[1]              ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; packet:sendpacket|done              ; N/A     ;
+; LEDR[1]              ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; packet:sendpacket|done              ; N/A     ;
+; LEDR[2]              ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; ~GND                                ; N/A     ;
+; LEDR[2]              ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; ~GND                                ; N/A     ;
 ; LEDR[3]              ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; ~GND                                ; N/A     ;
 ; LEDR[3]              ; pre-synthesis ; connected ; Top                            ; post-synthesis    ; ~GND                                ; N/A     ;
 ; auto_signaltap_0|gnd ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~GND ; N/A     ;
@@ -1744,43 +1805,46 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
-    Info: Processing started: Mon Dec  1 18:49:26 2025
+    Info: Processing started: Tue Dec  2 19:39:47 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off LightBoard -c LightBoard
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 20 processors detected
+Warning (10229): Verilog HDL Expression warning at LightBoard.v(49): truncated literal to match 5 bits File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/LightBoard.v Line: 49
 Info (12021): Found 1 design units, including 1 entities, in source file lightboard.v
-    Info (12023): Found entity 1: LightBoard File: M:/ECE287/FinalProject/LightBoard.v Line: 1
-Warning (10229): Verilog HDL Expression warning at Packet.v(27): truncated literal to match 3 bits File: M:/ECE287/FinalProject/Packet.v Line: 27
+    Info (12023): Found entity 1: LightBoard File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/LightBoard.v Line: 1
+Warning (10229): Verilog HDL Expression warning at Packet.v(26): truncated literal to match 3 bits File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/Packet.v Line: 26
 Info (12021): Found 1 design units, including 1 entities, in source file packet.v
-    Info (12023): Found entity 1: packet File: M:/ECE287/FinalProject/Packet.v Line: 1
+    Info (12023): Found entity 1: packet File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/Packet.v Line: 1
 Info (12127): Elaborating entity "LightBoard" for the top level hierarchy
-Warning (10034): Output port "LEDR[3]" at LightBoard.v(5) has no driver File: M:/ECE287/FinalProject/LightBoard.v Line: 5
-Info (12128): Elaborating entity "packet" for hierarchy "packet:sendpacket" File: M:/ECE287/FinalProject/LightBoard.v Line: 16
+Warning (10858): Verilog HDL warning at LightBoard.v(18): object shifted used but never assigned File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/LightBoard.v Line: 18
+Warning (10030): Net "shifted" at LightBoard.v(18) has no driver or initial value, using a default initial value '0' File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/LightBoard.v Line: 18
+Warning (10034): Output port "LEDR[4..2]" at LightBoard.v(6) has no driver File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/LightBoard.v Line: 6
+Info (12128): Elaborating entity "packet" for hierarchy "packet:sendpacket" File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/LightBoard.v Line: 216
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_mk84.tdf
-    Info (12023): Found entity 1: altsyncram_mk84 File: M:/ECE287/FinalProject/db/altsyncram_mk84.tdf Line: 32
+    Info (12023): Found entity 1: altsyncram_mk84 File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/altsyncram_mk84.tdf Line: 32
 Info (12021): Found 1 design units, including 1 entities, in source file db/decode_tma.tdf
-    Info (12023): Found entity 1: decode_tma File: M:/ECE287/FinalProject/db/decode_tma.tdf Line: 23
+    Info (12023): Found entity 1: decode_tma File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/decode_tma.tdf Line: 23
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_9hb.tdf
-    Info (12023): Found entity 1: mux_9hb File: M:/ECE287/FinalProject/db/mux_9hb.tdf Line: 23
+    Info (12023): Found entity 1: mux_9hb File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/mux_9hb.tdf Line: 23
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_glc.tdf
-    Info (12023): Found entity 1: mux_glc File: M:/ECE287/FinalProject/db/mux_glc.tdf Line: 23
+    Info (12023): Found entity 1: mux_glc File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/mux_glc.tdf Line: 23
 Info (12021): Found 1 design units, including 1 entities, in source file db/decode_vnf.tdf
-    Info (12023): Found entity 1: decode_vnf File: M:/ECE287/FinalProject/db/decode_vnf.tdf Line: 23
+    Info (12023): Found entity 1: decode_vnf File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/decode_vnf.tdf Line: 23
 Info (12021): Found 1 design units, including 1 entities, in source file db/cntr_c7i.tdf
-    Info (12023): Found entity 1: cntr_c7i File: M:/ECE287/FinalProject/db/cntr_c7i.tdf Line: 26
+    Info (12023): Found entity 1: cntr_c7i File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/cntr_c7i.tdf Line: 26
 Info (12021): Found 1 design units, including 1 entities, in source file db/cntr_85j.tdf
-    Info (12023): Found entity 1: cntr_85j File: M:/ECE287/FinalProject/db/cntr_85j.tdf Line: 26
+    Info (12023): Found entity 1: cntr_85j File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/cntr_85j.tdf Line: 26
 Info (12021): Found 1 design units, including 1 entities, in source file db/cntr_49i.tdf
-    Info (12023): Found entity 1: cntr_49i File: M:/ECE287/FinalProject/db/cntr_49i.tdf Line: 28
+    Info (12023): Found entity 1: cntr_49i File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/cntr_49i.tdf Line: 28
 Info (12021): Found 1 design units, including 1 entities, in source file db/cmpr_e9c.tdf
-    Info (12023): Found entity 1: cmpr_e9c File: M:/ECE287/FinalProject/db/cmpr_e9c.tdf Line: 23
+    Info (12023): Found entity 1: cmpr_e9c File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/cmpr_e9c.tdf Line: 23
 Info (12021): Found 1 design units, including 1 entities, in source file db/cntr_kri.tdf
-    Info (12023): Found entity 1: cntr_kri File: M:/ECE287/FinalProject/db/cntr_kri.tdf Line: 28
+    Info (12023): Found entity 1: cntr_kri File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/cntr_kri.tdf Line: 28
 Info (12021): Found 1 design units, including 1 entities, in source file db/cmpr_99c.tdf
-    Info (12023): Found entity 1: cmpr_99c File: M:/ECE287/FinalProject/db/cmpr_99c.tdf Line: 23
+    Info (12023): Found entity 1: cmpr_99c File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/cmpr_99c.tdf Line: 23
 Info (12033): Analysis and Synthesis generated Signal Tap or debug node instance "auto_signaltap_0"
 Info (11170): Starting IP generation for the debug fabric: alt_sld_fab.
-Info (11172): 2025.12.01.18:49:44 Progress: Loading sld48c515c5/alt_sld_fab_wrapper_hw.tcl
+Info (11172): 2025.12.02.19:40:01 Progress: Loading sld48c515c5/alt_sld_fab_wrapper_hw.tcl
 Info (11172): Alt_sld_fab.alt_sld_fab: SLD fabric agents which did not specify prefer_host were connected to JTAG
 Info (11172): Alt_sld_fab: Generating alt_sld_fab "alt_sld_fab" for QUARTUS_SYNTH
 Info (11172): Alt_sld_fab: "alt_sld_fab" instantiated alt_sld_fab "alt_sld_fab"
@@ -1791,47 +1855,55 @@ Info (11172): Ident: "alt_sld_fab" instantiated altera_connection_identification
 Info (11172): Alt_sld_fab: Done "alt_sld_fab" with 6 modules, 6 files
 Info (11171): Finished IP generation for the debug fabric: alt_sld_fab.
 Info (12021): Found 1 design units, including 1 entities, in source file db/ip/sld48c515c5/alt_sld_fab.v
-    Info (12023): Found entity 1: alt_sld_fab File: M:/ECE287/FinalProject/db/ip/sld48c515c5/alt_sld_fab.v Line: 9
+    Info (12023): Found entity 1: alt_sld_fab File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/ip/sld48c515c5/alt_sld_fab.v Line: 9
 Info (12021): Found 1 design units, including 1 entities, in source file db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab.v
-    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab File: M:/ECE287/FinalProject/db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab.v Line: 9
+    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab.v Line: 9
 Info (12021): Found 1 design units, including 1 entities, in source file db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab_ident.sv
-    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab_ident File: M:/ECE287/FinalProject/db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab_ident.sv Line: 33
+    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab_ident File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab_ident.sv Line: 33
 Info (12021): Found 1 design units, including 1 entities, in source file db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab_presplit.sv
-    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab_presplit File: M:/ECE287/FinalProject/db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab_presplit.sv Line: 3
+    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab_presplit File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab_presplit.sv Line: 3
 Info (12021): Found 2 design units, including 1 entities, in source file db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd
-    Info (12022): Found design unit 1: alt_sld_fab_alt_sld_fab_sldfabric-rtl File: M:/ECE287/FinalProject/db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd Line: 102
-    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab_sldfabric File: M:/ECE287/FinalProject/db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd Line: 11
+    Info (12022): Found design unit 1: alt_sld_fab_alt_sld_fab_sldfabric-rtl File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd Line: 102
+    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab_sldfabric File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd Line: 11
 Info (12021): Found 1 design units, including 1 entities, in source file db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab_splitter.sv
-    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab_splitter File: M:/ECE287/FinalProject/db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab_splitter.sv Line: 3
-Info (13000): Registers with preset signals will power-up high File: M:/ECE287/FinalProject/Packet.v Line: 84
+    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab_splitter File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/db/ip/sld48c515c5/submodules/alt_sld_fab_alt_sld_fab_splitter.sv Line: 3
+Info (13000): Registers with preset signals will power-up high File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/Packet.v Line: 82
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "LEDR[1]" is stuck at GND File: M:/ECE287/FinalProject/LightBoard.v Line: 5
-    Warning (13410): Pin "LEDR[3]" is stuck at GND File: M:/ECE287/FinalProject/LightBoard.v Line: 5
+    Warning (13410): Pin "LEDR[2]" is stuck at GND File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/LightBoard.v Line: 6
+    Warning (13410): Pin "LEDR[3]" is stuck at GND File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/LightBoard.v Line: 6
+    Warning (13410): Pin "LEDR[4]" is stuck at GND File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/LightBoard.v Line: 6
 Info (286031): Timing-Driven Synthesis is running on partition "Top"
-Info (17049): 3 registers lost all their fanouts during netlist optimizations.
-Info (144001): Generated suppressed messages file M:/ECE287/FinalProject/output_files/LightBoard.map.smsg
+Info (17049): 8 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/output_files/LightBoard.map.smsg
 Info (35024): Successfully connected in-system debug instance "auto_signaltap_0" to all 41 required data inputs, trigger inputs, acquisition clocks, and dynamic pins
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 9 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 2 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "KEY[2]" File: M:/ECE287/FinalProject/LightBoard.v Line: 3
-    Warning (15610): No output dependent on input pin "KEY[3]" File: M:/ECE287/FinalProject/LightBoard.v Line: 3
-Info (21057): Implemented 3825 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 8 input pins
-    Info (21059): Implemented 5 output pins
-    Info (21061): Implemented 3747 logic cells
+Warning (21074): Design contains 9 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "KEY[2]" File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/LightBoard.v Line: 3
+    Warning (15610): No output dependent on input pin "SW[2]" File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/LightBoard.v Line: 4
+    Warning (15610): No output dependent on input pin "SW[3]" File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/LightBoard.v Line: 4
+    Warning (15610): No output dependent on input pin "SW[4]" File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/LightBoard.v Line: 4
+    Warning (15610): No output dependent on input pin "SW[5]" File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/LightBoard.v Line: 4
+    Warning (15610): No output dependent on input pin "SW[6]" File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/LightBoard.v Line: 4
+    Warning (15610): No output dependent on input pin "SW[7]" File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/LightBoard.v Line: 4
+    Warning (15610): No output dependent on input pin "SW[8]" File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/LightBoard.v Line: 4
+    Warning (15610): No output dependent on input pin "SW[9]" File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/LightBoard.v Line: 4
+Info (21057): Implemented 3871 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 18 input pins
+    Info (21059): Implemented 11 output pins
+    Info (21061): Implemented 3777 logic cells
     Info (21064): Implemented 64 RAM segments
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 9 warnings
-    Info: Peak virtual memory: 5020 megabytes
-    Info: Processing ended: Mon Dec  1 18:50:10 2025
-    Info: Elapsed time: 00:00:44
-    Info: Total CPU time (on all processors): 00:00:21
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 20 warnings
+    Info: Peak virtual memory: 5021 megabytes
+    Info: Processing ended: Tue Dec  2 19:40:26 2025
+    Info: Elapsed time: 00:00:39
+    Info: Total CPU time (on all processors): 00:00:22
 
 
 +------------------------------------------+
 ; Analysis & Synthesis Suppressed Messages ;
 +------------------------------------------+
-The suppressed messages can be found in M:/ECE287/FinalProject/output_files/LightBoard.map.smsg.
+The suppressed messages can be found in M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/output_files/LightBoard.map.smsg.
 
 

@@ -76,7 +76,6 @@ begin
 		bitcount <= 0;
 		sends <= data;
 		pos <= 0;
-		neg <= 0;
 		done <= 0;
 end
 else
@@ -87,8 +86,7 @@ else
 			count <= 0;
 			bitcount <= 0;
 			sends <= data;
-			  <= 0;
-			neg <= 0;
+			pos <= 0;
 		end
 		
 		MARK1:
