@@ -1,16 +1,16 @@
-Fitter Status : Successful - Wed Dec  3 19:36:40 2025
+Fitter Status : Successful - Thu Dec  4 15:03:34 2025
 Quartus Prime Version : 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 Revision Name : LightBoard
 Top-level Entity Name : LightBoard
 Family : Cyclone V
 Device : 5CSEMA5F31C6
 Timing Models : Final
-Logic utilization (in ALMs) : 348 / 32,070 ( 1 % )
-Total registers : 647
+Logic utilization (in ALMs) : 17,966 / 32,070 ( 56 % )
+Total registers : 32133
 Total pins : 25 / 457 ( 5 % )
 Total virtual pins : 0
-Total block memory bits : 524,288 / 4,065,280 ( 13 % )
-Total RAM Blocks : 64 / 397 ( 16 % )
+Total block memory bits : 131,072 / 4,065,280 ( 3 % )
+Total RAM Blocks : 16 / 397 ( 4 % )
 Total DSP Blocks : 0 / 87 ( 0 % )
 Total HSSI RX PCSs : 0
 Total HSSI PMA RX Deserializers : 0
