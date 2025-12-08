@@ -1,0 +1,92 @@
+module fade(
+
+	input clk,
+	input rst,
+	input [5642:0]qn,
+	input [9:0]t,
+	input [5642:0]data,
+	output reg [5642:0]newdata,
+	output reg done
+	
+	);
+	
+	reg [1:0]S;
+	reg [1:0]NS;
+	
+	reg [32:0]sr;
+	reg [5642:0]dval;
+	
+
+	parameter 
+		STAT=3'd0,		//Static state
+		INIT=3'd1,		//Initialize fade
+		FADE=3'd2,		//Fading
+		JUMP=3'd3,		//Final jump to next state
+		DONE=3'd4;		//Done signal
+	
+	always@(posedge clk or negedge rst)
+		if(sr>0)
+			sr <= sr-1'b1;
+		
+	always@(posedge clk or negedge rst)
+		if(rst==1'b0)
+			S <= STAT;
+		else
+			S <= NS;
+	
+	always@(*)
+		case(S)
+			
+			STAT:
+			begin
+				if(done==1)
+					NS = STAT;
+				else	
+					NS = INIT;
+			end
+			
+			INIT:
+			begin
+				if(t>0)
+					NS = FADE;
+				else
+					NS = JUMP;
+			end
+			
+			FADE:
+			if(dval > 0)
+				NS = FADE;
+			else
+				NS = JUMP;
+			
+			JUMP: NS = DONE;
+			
+			DONE: NS = STAT;
+		
+		endcase
+	
+	always@(posedge clk or negedge rst)
+		case(S)
+		
+			STAT: dval <= 5643'd0;
+			
+			INIT: sr <= t*5000000
+			
+			FADE:
+			begin
+			if(newdata[19:12] < qn[19:12])
+			begin
+				dval1 <= (qn[19:12]-data[19:12])/sr;
+				newdata[19:12] <= newdata[19:12]+dval1;
+			end
+			if(newdata[19:12] >= qn[19:12])
+			begin
+				dval1 <= (data[19:12]-qn[19:12])/sr;
+				newdata[19:12] <= newdata[19:12]-dval1;
+			end
+			
+			JUMP:
+			
+			DONE:
+			
+		endcase

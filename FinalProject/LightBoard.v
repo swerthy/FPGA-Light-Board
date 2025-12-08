@@ -1,29 +1,30 @@
 module LightBoard(
+
 	input CLOCK_50,
 	input [3:0]KEY,
 	input [9:0]SW,
 	output [9:0]LEDR
+	
 	);
 	
 	wire clk;
 	assign clk = CLOCK_50;
 	wire rst;
 	assign rst = KEY[0];
-	wire send;
-	assign send = !KEY[1];
 	wire enter;
 	assign enter = !KEY[3];
 	wire [5642:0]bo;
 	assign bo = 5643'b11000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000111000000001110000000011100000000100000000000;
 	reg [5642:0]data;
-	reg shifted;
 	wire out;
 	wire done;
+	wire faded;
  
 	reg [8:0]addr;
 	reg [7:0]val;
 	reg [2:0]q;
 	reg [4:0]qstack;
+
 	assign LEDR[4:1] = qstack[4:1];
 	assign LEDR[0] = out;
 	
@@ -41,6 +42,12 @@ module LightBoard(
 	
 	reg [5642:0]q4;
 	reg [9:0]t4;
+	
+	reg [5642:0]qn;
+	reg [9:0]t;
+	
+	reg send;
+	reg fade;
 	
 	reg [4:0]S;
 	reg [4:0]NS;
@@ -68,10 +75,12 @@ module LightBoard(
 		QGO=5'd14,		//Destination selection
 		SETX=5'd15,		//Set cue debounce
 		SET=5'd16,		//Set cue
-		//Go to next cue (SW[1:0]==2'b00)
-		SHIFT=5'd17,	//Fade
+		//Fade to next cue (SW[1:0]==2'b00)
+		DEFSHIFT=5'd17,//Define fade parameters
+		FADE=5'd18,		//Fade
 		//Other
-		ERROR=5'hff;
+		INIT=5'd31,		//Initialize system
+		ERROR=5'hff;	//Error state
 		
 		
 	always@(posedge clk or negedge rst)
@@ -83,18 +92,20 @@ module LightBoard(
 	always@(*)
 		case(S)
 			
+			INIT: NS = HOME;
+			
 			HOME:
 			begin
 				if(enter==0)
-					NS <= HOME;
+					NS = HOME;
 				else
 				begin
 					case(SW[1:0])
 						
-						2'b11: NS <= ADDRX;
-						2'b10: NS <= QNUMX;
-						2'b01: NS <= QGOX;
-						2'b00: NS <= SHIFT;
+						2'b11: NS = ADDRX;
+						2'b10: NS = QNUMX;
+						2'b01: NS = QGOX;
+						2'b00: NS = DEFSHIFT;
 						
 					endcase
 				end
@@ -102,93 +113,95 @@ module LightBoard(
 			
 			ADDRX: 
 			if(enter==1)
-				NS <= ADDRX;
+				NS = ADDRX;
 			else
-				NS <= ADDR;
+				NS = ADDR;
 			
 			ADDR:
 			if(enter==0)
-				NS <= ADDR;
+				NS = ADDR;
 			else
-				NS <= VALX;
+				NS = VALX;
 			
 			VALX:
 			if(enter==1)
-				NS <= VALX;
+				NS = VALX;
 			else
-				NS <= VAL;
+				NS = VAL;
 			
 			VAL:
 			if(enter==0)
-				NS <= VAL;
+				NS = VAL;
 			else
-				NS <= RECAX;
+				NS = RECAX;
 			
 			RECAX:
 			if(enter==1)
-				NS <= RECAX;
+				NS = RECAX;
 			else
-				NS <= RECA;
+				NS = RECA;
 				
-			RECA: NS <= HOME;
+			RECA: NS = HOME;
 			
 			QNUMX:
 			if(enter==1)
-				NS <= QNUMX;
+				NS = QNUMX;
 			else
-				NS <= QNUM;
+				NS = QNUM;
 				
 			QNUM:
 			if(enter==0)
-				NS <= QNUM;
+				NS = QNUM;
 			else
-				NS <= TIMEX;
+				NS = TIMEX;
 			
 			TIMEX:
 			if(enter==1)
-				NS <= TIMEX;
+				NS = TIMEX;
 			else
-				NS <= TIME;
+				NS = TIME;
 			
 			TIME:
 			if(enter==0)
-				NS <= TIME;
+				NS = TIME;
 			else
-				NS <= RECQX;
+				NS = RECQX;
 			
 			RECQX:
 			if(enter==1)
-				NS <= RECQX;
+				NS = RECQX;
 			else
-				NS <= RECQ;
+				NS = RECQ;
 			
-			RECQ: NS <= HOME;
+			RECQ: NS = HOME;
 			
 			QGOX:
 			if(enter==1)
-				NS <= QGOX;
+				NS = QGOX;
 			else
-				NS <= QGO;
+				NS = QGO;
 			
 			QGO:
 			if(enter==0)
-				NS <= QGO;
+				NS = QGO;
 			else
-				NS <= SETX;
+				NS = SETX;
 			
 			SETX:
 			if(enter==1)
-				NS <= SETX;
+				NS = SETX;
 			else
-				NS <= SET;
+				NS = SET;
 			
-			SET: NS <= HOME;
+			SET: NS = HOME;
 			
-			SHIFT:
-			if(shifted==1)
-				NS <= HOME;
+			DEFSHIFT: NS = FADE;
+			
+			FADE: 
+			if(faded==0)
+				NS = FADE;
 			else
-				NS <= SHIFT;
+				NS = HOME;
 
 		endcase
 
@@ -211,6 +224,22 @@ module LightBoard(
 		else
 		begin
 		case(S)
+			
+			INIT:
+			begin
+				data <= bo;
+				q0 <= bo;
+				q1 <= bo;
+				q2 <= bo;
+				q3 <= bo;
+				q4 <= bo;
+				t0 <= 10'd0;
+				t1 <= 10'd0;
+				t2 <= 10'd0;
+				t3 <= 10'd0;
+				t4 <= 10'd0;	
+				qstack <= 5'b00000;
+			end
 			
 //			HOME: 
 		
@@ -861,12 +890,220 @@ module LightBoard(
 //				default: S <= ERROR;
 			endcase
 			
-//			SHIFT:
+			DEFSHIFT:
+			begin
+				fade <= 1;
+				case(q)
+				
+					3'd0:
+					begin
+						if(qstack[1]==1)
+						begin
+							qn <= q1;
+							t <= t1;
+						end
+						else
+						begin
+							if(qstack[2]==1)
+							begin
+								qn <= q2;
+								t <= t2;
+							end
+							else
+							begin
+								if(qstack[3]==1)
+								begin
+									qn <= q3;
+									t <= t3;
+								end
+								else
+								begin
+									if(qstack[4]==1)
+									begin
+										qn <= q4;
+										t <= t4;
+									end
+									else
+									begin
+										qn <= q0;
+										t <= 10'd0;
+									end
+								end
+							end
+						end
+					end
+					
+					3'd1:
+					begin
+						data <= q1;
+						if(qstack[2]==1)
+						begin
+							qn <= q2;
+							t <= t2;
+						end
+						else
+						begin
+							if(qstack[3]==1)
+							begin
+								qn <= q3;
+								t <= t3;
+							end
+							else
+							begin
+								if(qstack[4]==1)
+								begin
+									qn <= q4;
+									t <= t4;
+								end
+								else
+								begin
+									if(qstack[0]==1)
+									begin
+										qn <= q0;
+										t <= t0;
+									end
+									else
+									begin
+										qn <= q1;
+										t <= 10'd0;
+									end
+								end
+							end
+						end
+					end
+					
+					3'd2:
+					begin
+						data <= q2;
+						if(qstack[3]==1)
+						begin
+							qn <= q3;
+							t <= t3;
+						end
+						else
+						begin
+							if(qstack[4]==1)
+							begin
+								qn <= q4;
+								t <= t4;
+							end
+							else
+							begin
+								if(qstack[0]==1)
+								begin
+									qn <= q0;
+									t <= t0;
+								end
+								else
+								begin
+									if(qstack[0]==1)
+									begin
+										qn <= q0;
+										t <= t0;
+									end
+									else
+									begin
+										qn <= q2;
+										t <= 10'd0;
+									end
+								end
+							end
+						end
+					end
+					
+					3'd3:
+					begin
+						data <= q0;
+						if(qstack[1]==1)
+						begin
+							qn <= q1;
+							t <= t1;
+						end
+						else
+						begin
+							if(qstack[2]==1)
+							begin
+								qn <= q2;
+								t <= t2;
+							end
+							else
+							begin
+								if(qstack[3]==1)
+								begin
+									qn <= q3;
+									t <= t3;
+								end
+								else
+								begin
+									if(qstack[4]==1)
+									begin
+										qn <= q4;
+										t <= t4;
+									end
+									else
+									begin
+										qn <= q3;
+										t <= 10'd0;
+									end
+								end
+							end
+						end
+					end
+					
+					3'd4:
+					begin
+						data <= q4;
+						if(qstack[0]==1)
+						begin
+							qn <= q0;
+							t <= t0;
+						end
+						else
+						begin
+							if(qstack[1]==1)
+							begin
+								qn <= q1;
+								t <= t1;
+							end
+							else
+							begin
+								if(qstack[2]==1)
+								begin
+									qn <= q2;
+									t <= t2;
+								end
+								else
+								begin
+									if(qstack[3]==1)
+									begin
+										qn <= q3;
+										t <= t3;
+									end
+									else
+									begin
+										qn <= q4;
+										t <= 10'd0;
+									end
+								end
+							end
+						end
+					end
+				
+				endcase
+			end
 			
+			FADE: 
+			begin
+				fade <= 0;
+				data <= newdata;
+			end
+
 		endcase
+			
+		
 		end
 	
 	packet sendpacket(clk,rst,send,data,out,done);
-	//packet sendpacket(clk,rst,send,data,output,done);
+	fade deffade(clk,rst,fade,qn,t,data,newdata,faded);
 	
 endmodule
