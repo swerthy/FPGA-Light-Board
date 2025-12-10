@@ -1,7 +1,7 @@
 Info (10281): Verilog HDL Declaration information at LightBoard.v(23): object "addr" differs only in case from object "ADDR" in the same scope File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/LightBoard.v Line: 23
 Info (10281): Verilog HDL Declaration information at LightBoard.v(24): object "val" differs only in case from object "VAL" in the same scope File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/LightBoard.v Line: 24
-Info (10281): Verilog HDL Declaration information at LightBoard.v(50): object "fade" differs only in case from object "FADE" in the same scope File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/LightBoard.v Line: 50
+Info (10281): Verilog HDL Declaration information at LightBoard.v(51): object "fade" differs only in case from object "FADE" in the same scope File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/LightBoard.v Line: 51
+Warning (10268): Verilog HDL information at Packet.v(35): always construct contains both blocking and non-blocking assignments File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/Packet.v Line: 35
 Info (10281): Verilog HDL Declaration information at Packet.v(6): object "data" differs only in case from object "DATA" in the same scope File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/Packet.v Line: 6
-Info (10281): Verilog HDL Declaration information at Packet.v(10): object "done" differs only in case from object "DONE" in the same scope File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/Packet.v Line: 10
 Info (10281): Verilog HDL Declaration information at fade.v(5): object "fade" differs only in case from object "FADE" in the same scope File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/fade.v Line: 5
 Info (10281): Verilog HDL Declaration information at fade.v(12): object "done" differs only in case from object "DONE" in the same scope File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/fade.v Line: 12

@@ -9,7 +9,7 @@ module packet(
 
 );
 
-	reg [15:0]count;
+	reg [22:0]count;
 	reg [7:0]bitcount;
 	reg [5642:0]sends;
 
@@ -17,13 +17,13 @@ module packet(
 	reg [2:0]NS;
 
 	parameter 
-		BREAK=3'd0, //Break between DMX packets
-		MARK1=3'd1, //Start of a packet
-		DATA=3'd2,  //Bits of a packet
-		NEXT=3'd3,  //Move to next data bit
-		MARK2=3'd4, //End of a packet
-		DONE=3'd5,	//Done signal
-		ERROR=3'hF; //Error
+		BREAK=3'd0, //Break to start next DMX packets (low)
+		START=3'd1,	//Reset counter and start packet (low)
+		MARK=3'd2,	//Start of a packet (high)
+		DATA=3'd3,  //Bits of a packet
+		NEXT=3'd4,  //Move to next data bit 
+		WAIT=3'd5,	//Idle between packets (high)
+		RESET=3'd6; //Reset for next packet (high)
 		
 	always@(posedge clk or negedge rst)
 		if(rst==1'b0)
@@ -35,37 +35,39 @@ module packet(
 		case(S)
 			
 			BREAK:
-			if(send==0)
+			if(count<5000) //>22 bits
 				NS = BREAK;
 			else
-				NS = MARK1;
+				NS = START;
+				
+			START: NS <= MARK;
 			
-			MARK1:
-				if(count<50000) //1ms
-					NS = MARK1;
+			MARK:
+				if(count<500) //>2 bits
+					NS = MARK;
 				else
 					NS = DATA;
 
 			DATA:
-				if(sends==5643'd0) //All data sent
-					NS = MARK2;
+				if(sends==5643'd0) //All data sent - Would typically be 5643 
+					NS = WAIT;
 				else
 				begin
-					if(bitcount<200) //4us
+					if(bitcount<200) //4us (per bit)
 						NS = DATA;
 					else
 						NS = NEXT;
 				end
 			
 			NEXT: NS = DATA;
-
-			MARK2:
-				if(count<25000) //0.5ms
-					NS = MARK2;
-				else
-					NS = DONE;
 			
-			DONE: NS = BREAK;
+			WAIT:
+				if(send==1'b0) //Would typically be count<2500000 (50ms between packets)
+					NS = WAIT;
+				else
+					NS = RESET;
+			
+			RESET: NS = BREAK;
 			
 		endcase
 
@@ -83,13 +85,19 @@ module packet(
 		
 			BREAK: 
 			begin
-				count <= 0;
-				bitcount <= 0;
+				count <= count+1'b1;
 				sends <= data;
 				pos <= 0;
 			end
 			
-			MARK1:
+			START:
+			begin
+				count <= 0;
+				sends <= data;
+				pos <= 0;
+			end
+			
+			MARK:
 			begin
 				pos <= 1;
 				count <= count+1'b1;
@@ -108,16 +116,18 @@ module packet(
 				bitcount <= 0;
 			end
 			
-			MARK2:
+			WAIT: 
 			begin
-				pos <= 1;
 				count <= count+1'b1;
-			end
-			
-			DONE:
-			begin
 				pos <= 1;
 				done <= 1;
+			end
+			
+			RESET:
+			begin
+				count <= 0;
+				pos <= 1;
+				done <= 0;
 			end
 			
 		endcase
