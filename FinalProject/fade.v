@@ -583,11 +583,19 @@ module fade(
 		endcase
 	
 	always@(posedge clk or negedge rst)
+		if(rst==1'b0)
+		begin
+			done <= 1'b0;
+			sr <= 5'd25;
+			sl <= 28'd0;
+			newdata <= data;
+			count <= 28'd0;
+		end
+		else
 		case(S)
 		
 			STAT: 
 			begin
-				qn <= data;
 				done <= 0;
 			end
 			
