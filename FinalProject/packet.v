@@ -62,12 +62,15 @@ module packet(
 			NEXT: NS = DATA;
 			
 			WAIT:
-				if(send==1'b0) //Would typically be count<2500000 (50ms between packets)
+				if(count<3865900) //About 77ms between packets (total packet length of 100ms)
 					NS = WAIT;
 				else
 					NS = RESET;
 			
 			RESET: NS = BREAK;
+			
+			// BUG
+			default: NS = START;
 			
 		endcase
 
@@ -76,7 +79,7 @@ module packet(
 	begin
 			count <= 0;
 			bitcount <= 0;
-			sends <= data;
+			sends <= 0;
 			pos <= 0;
 			done <= 0;
 	end
@@ -112,7 +115,8 @@ module packet(
 			
 			NEXT: 
 			begin
-				sends <= sends/2;
+				//sends <= sends/2;
+				sends <= sends >> 1;
 				bitcount <= 0;
 			end
 			

@@ -2,167 +2,179 @@ module fade(
 
 	input clk,
 	input rst,
-	input fade,
-	input [5642:0]qn,
+	input start,
+	input [7:0]n,
 	input [9:0]t,
-	input [5642:0]data,
-	output reg [5642:0]newdata,
+	input [7:0]c,
+	output reg [7:0]newM,
 	output reg done
 	
 	);
 	
-	reg [2:0]S;
-	reg [2:0]NS;
-	
-	reg [4:0]sr;
-	reg [27:0]sl;
+	reg [7:0]s;
+	reg [9:0]tp;
+	reg [9:0]pw;
+	reg [22:0]count;
 	reg [7:0]dval;
-	reg [27:0]count;
+	reg [9:0]dpack;
 	
-	reg [7:0]dval1;
-	reg [7:0]dval2;
-	reg [7:0]dval3;
-	reg [7:0]dval4;
-	reg [7:0]dval5;
+	reg [3:0]S;
+	reg [3:0]NS;
 	
-	parameter 
-		STAT=3'd0,		//Static state
-		INIT=3'd1,		//Initialize fade
-		FADE=3'd2,		//Fading
-		WAIT=3'd3,		//Wait for step to end
-		JUMP=3'd4,		//Final jump to next state
-		DONE=3'd5;		//Done signal
+	parameter
+		START = 4'd0,
+		SHIFT = 4'd1,
+		DVAL = 4'd2,
+		DVALGO = 4'd3,
+		WAITDVAL = 4'd4,
+		DPACK = 4'd5,
+		DPACKGO = 4'd6,
+		WAITDPACK = 4'd7,
+		PACKWAIT = 4'd8,
+		DONE = 4'd9;
 		
 	always@(posedge clk or negedge rst)
 		if(rst==1'b0)
-			S <= STAT;
+			S <= START;
 		else
 			S <= NS;
-	
+
 	always@(*)
 		case(S)
 			
-			STAT:
-			begin
-				if(fade==0)
-					NS = STAT;
-				else	
-					NS = INIT;
-			end
+			START:
+			if(start==1'b0)
+				NS = START;
+			else
+				NS = SHIFT;
 			
-			INIT:
+			SHIFT:
 			begin
-				if(t>0)
-					NS = FADE;
+				if(t==0)
+					NS = DONE;
 				else
-					NS = JUMP;
+				begin
+					if(t<=s)
+						NS = DVAL;
+					else
+						NS = DPACK;
+				end
 			end
 			
-			FADE:
-			if(dval > 0)
-				NS = WAIT;
-			else
-				NS = JUMP;
-				
-			WAIT:
-			if(count<sl)
-				NS = WAIT;
-			else
-				NS = FADE;
+			DVAL: NS = DVALGO;
 			
-			JUMP: NS = DONE;
+			DVALGO: NS = WAITDVAL;
 			
-			DONE: NS = STAT;
+			WAITDVAL:
+			begin
+				if(count<5000000)
+					NS = WAITDVAL;
+				else
+				begin
+					if(tp<t)
+						NS = DVALGO;
+					else
+						NS = DONE;
+				end
+			end
+			
+			DPACK: NS = DPACKGO;
+			
+			DPACKGO: NS = WAITDPACK;
+			
+			WAITDPACK:
+			begin
+				if(count<5000000)
+					NS = WAITDPACK;
+				else
+				begin
+					if(pw<dpack)
+						NS = PACKWAIT;
+					else
+					begin
+						if(tp<s)
+							NS = DPACKGO;
+						else
+							NS = DONE;
+					end
+				end
+			end
+			
+			PACKWAIT: NS = WAITDPACK;
+			
+			DONE:
+			if(start==1'b0)
+				NS = START;
+			else
+				NS = DONE;
+			
+			// (PAJ) - BUG
+			default: NS = START;
 		
 		endcase
 	
 	always@(posedge clk or negedge rst)
 		if(rst==1'b0)
 		begin
+			s <= 8'd0;
+			tp <= 10'd0;
+			count <= 23'd0;
+			dval <= 8'd0;
+			dpack <= 10'd0;
+			newM <= 0;
 			done <= 1'b0;
-			sr <= 5'd25;
-			sl <= 28'd0;
-			newdata <= data;
-			count <= 28'd0;
 		end
 		else
 		case(S)
 		
-			STAT: 
+			START:
 			begin
-				done <= 0;
+				s <= 8'd0;
+				tp <= 10'd0;
+				count <= 23'd0;
+				dval <= 8'd0;
+				dpack <= 10'd0;
+				newM <= c;
+				done <= 1'b0;
 			end
 			
-			INIT: 
+			SHIFT: s <= c-n;
+			
+			DVAL: dval <= s/t;
+			
+			DVALGO:
 			begin
-				sr <= 5'd25;			//Steps remaining
-				sl <= t*200000;	//Step tick length
-				newdata <= data;
+				newM <= newM - dval;
+				count <= 23'd0;
+				tp <= tp+1'b1;
 			end
 			
-			FADE:
+			WAITDVAL: count <= count+1'b1;
+			
+			DPACK: dpack <= t/s;
+			
+			DPACKGO:
 			begin
-				dval <= dval1|dval2|dval3|dval4|dval5;
-				count <= count+1'b1;
-				sr <= sr-1'b1;
-				if(newdata[19:12] < qn[19:12])
-				begin
-					dval1 <= (qn[19:12]-data[19:12])/sr;
-					newdata[19:12] <= newdata[19:12]+dval1;
-				end
-				else
-				begin
-					dval1 <= (data[19:12]-qn[19:12])/sr;
-					newdata[19:12] <= newdata[19:12]-dval1;
-				end
-				if(newdata[30:23] < qn[30:23])
-				begin
-					dval2 <= (qn[30:23]-data[30:23])/sr;
-					newdata[30:23] <= newdata[30:23]+dval2;
-				end
-				else
-				begin
-					dval2 <= (data[30:23]-qn[30:23])/sr;
-					newdata[30:23] <= newdata[30:23]-dval2;
-				end
-				if(newdata[41:34] < qn[41:34])
-				begin
-					dval3 <= (qn[41:34]-data[41:34])/sr;
-					newdata[41:34] <= newdata[41:34]+dval3;
-				end
-				else
-				begin
-					dval3 <= (data[41:34]-qn[41:34])/sr;
-					newdata[41:34] <= newdata[41:34]-dval3;
-				end
-				if(newdata[52:45] < qn[52:45])
-				begin
-					dval4 <= (qn[52:45]-data[52:45])/sr;
-					newdata[52:45] <= newdata[52:45]+dval4;
-				end
-				else
-				begin
-					dval4 <= (data[52:45]-qn[52:45])/sr;
-					newdata[52:45] <= newdata[52:45]-dval4;
-				end
-				if(newdata[63:56] < qn[63:56])
-				begin
-					dval5 <= (qn[63:56]-data[63:56])/sr;
-					newdata[63:56] <= newdata[63:56]+dval5;
-				end
-				else
-				begin
-					dval5 <= (data[63:56]-qn[63:56])/sr;
-					newdata[63:56] <= newdata[63:56]-dval5;
-				end
+				newM <= newM - 1'b1;
+				count <= 23'd0;
+				pw <= 10'd0;
+				tp <= tp+1'b1;
 			end
-
-			WAIT: count <= count+1'b1;
 			
-			JUMP: newdata <= qn;
+			WAITDPACK: count <= count+1'b1;
 			
-			DONE: done <= 1;
+			PACKWAIT:
+			begin
+				count <= 23'd0;
+				pw <= pw+1'b1;
+			end
 			
+			DONE: 
+			begin
+				newM <= n;
+				done <= 1'b1;
+			end
 		endcase
-
+	
 endmodule
+				

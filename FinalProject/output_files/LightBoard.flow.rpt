@@ -1,5 +1,5 @@
 Flow report for LightBoard
-Tue Dec  9 21:36:46 2025
+Wed Dec 10 15:07:26 2025
 Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
@@ -41,19 +41,19 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +---------------------------------+------------------------------------------------+
-; Flow Status                     ; Successful - Tue Dec  9 21:36:27 2025          ;
+; Flow Status                     ; Successful - Wed Dec 10 15:07:16 2025          ;
 ; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
 ; Revision Name                   ; LightBoard                                     ;
 ; Top-level Entity Name           ; LightBoard                                     ;
 ; Family                          ; Cyclone V                                      ;
 ; Device                          ; 5CSEMA5F31C6                                   ;
 ; Timing Models                   ; Final                                          ;
-; Logic utilization (in ALMs)     ; 7,836 / 32,070 ( 24 % )                        ;
-; Total registers                 ; 6824                                           ;
-; Total pins                      ; 25 / 457 ( 5 % )                               ;
+; Logic utilization (in ALMs)     ; 5,527 / 32,070 ( 17 % )                        ;
+; Total registers                 ; 7592                                           ;
+; Total pins                      ; 46 / 457 ( 10 % )                              ;
 ; Total virtual pins              ; 0                                              ;
 ; Total block memory bits         ; 131,072 / 4,065,280 ( 3 % )                    ;
-; Total DSP Blocks                ; 1 / 87 ( 1 % )                                 ;
+; Total DSP Blocks                ; 0 / 87 ( 0 % )                                 ;
 ; Total HSSI RX PCSs              ; 0                                              ;
 ; Total HSSI PMA RX Deserializers ; 0                                              ;
 ; Total HSSI TX PCSs              ; 0                                              ;
@@ -68,7 +68,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 12/09/2025 21:28:55 ;
+; Start date & time ; 12/10/2025 15:01:22 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; LightBoard          ;
 +-------------------+---------------------+
@@ -79,7 +79,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+-------------------------------------------------------+---------------+-------------+-----------------------------------+
 ; Assignment Name                     ; Value                                                 ; Default Value ; Entity Name ; Section Id                        ;
 +-------------------------------------+-------------------------------------------------------+---------------+-------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID               ; 184978422678649.176533373420660                       ; --            ; --          ; --                                ;
+; COMPILER_SIGNATURE_ID               ; 184978422678344.176539688217380                       ; --            ; --          ; --                                ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                                   ; --            ; --          ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                                   ; --            ; --          ; eda_board_design_boundary_scan    ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                                   ; --            ; --          ; eda_board_design_signal_integrity ;
@@ -91,6 +91,8 @@ https://fpgasoftware.intel.com/eula.
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family)                ; --            ; --          ; Top                               ;
 ; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family)                ; --            ; --          ; Top                               ;
 ; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family)                ; --            ; --          ; Top                               ;
+; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                                   ; --            ; --          ; --                                ;
+; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                 ; --            ; --          ; --                                ;
 ; PROJECT_OUTPUT_DIRECTORY            ; output_files                                          ; --            ; --          ; --                                ;
 ; SLD_FILE                            ; db/stp1_auto_stripped.stp                             ; --            ; --          ; --                                ;
 ; SLD_NODE_CREATOR_ID                 ; 110                                                   ; --            ; --          ; auto_signaltap_0                  ;
@@ -129,11 +131,11 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:01:34     ; 1.0                     ; 5505 MB             ; 00:00:54                           ;
-; Fitter               ; 00:04:48     ; 1.1                     ; 8105 MB             ; 00:02:42                           ;
-; Assembler            ; 00:00:11     ; 1.0                     ; 4968 MB             ; 00:00:04                           ;
-; Timing Analyzer      ; 00:00:17     ; 2.6                     ; 5522 MB             ; 00:00:15                           ;
-; Total                ; 00:06:50     ; --                      ; --                  ; 00:03:55                           ;
+; Analysis & Synthesis ; 00:01:11     ; 1.0                     ; 5415 MB             ; 00:00:47                           ;
+; Fitter               ; 00:04:25     ; 1.1                     ; 8006 MB             ; 00:03:50                           ;
+; Assembler            ; 00:00:06     ; 1.0                     ; 4939 MB             ; 00:00:04                           ;
+; Timing Analyzer      ; 00:00:09     ; 3.1                     ; 5476 MB             ; 00:00:12                           ;
+; Total                ; 00:05:51     ; --                      ; --                  ; 00:04:53                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -142,10 +144,10 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+------------------+------------+------------+----------------+
 ; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +----------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis ; CEC-EGB267-09    ; Windows 10 ; 10.0       ; x86_64         ;
-; Fitter               ; CEC-EGB267-09    ; Windows 10 ; 10.0       ; x86_64         ;
-; Assembler            ; CEC-EGB267-09    ; Windows 10 ; 10.0       ; x86_64         ;
-; Timing Analyzer      ; CEC-EGB267-09    ; Windows 10 ; 10.0       ; x86_64         ;
+; Analysis & Synthesis ; CEC-EGB267-05    ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; CEC-EGB267-05    ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; CEC-EGB267-05    ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; CEC-EGB267-05    ; Windows 10 ; 10.0       ; x86_64         ;
 +----------------------+------------------+------------+------------+----------------+
 
 
