@@ -220,7 +220,7 @@ module LightBoard(
 		if(rst==1'b0)
 		begin
 			addr <= 0;
-			data <= 0;
+			data <= bo;
 			q0 <= 0;
 			q1 <= 0;
 			q2 <= 0;

@@ -5,5 +5,5 @@ Info (10281): Verilog HDL Declaration information at Packet.v(6): object "data" 
 Info (10281): Verilog HDL Declaration information at fade.v(14): object "s" differs only in case from object "S" in the same scope File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/fade.v Line: 14
 Info (10281): Verilog HDL Declaration information at fade.v(5): object "start" differs only in case from object "START" in the same scope File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/fade.v Line: 5
 Info (10281): Verilog HDL Declaration information at fade.v(18): object "dval" differs only in case from object "DVAL" in the same scope File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/fade.v Line: 18
-Info (10281): Verilog HDL Declaration information at fade.v(19): object "dpack" differs only in case from object "DPACK" in the same scope File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/fade.v Line: 19
+Info (10281): Verilog HDL Declaration information at fade.v(20): object "leap" differs only in case from object "LEAP" in the same scope File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/fade.v Line: 20
 Info (10281): Verilog HDL Declaration information at fade.v(12): object "done" differs only in case from object "DONE" in the same scope File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/fade.v Line: 12

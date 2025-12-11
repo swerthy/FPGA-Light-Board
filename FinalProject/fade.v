@@ -17,6 +17,8 @@ module fade(
 	reg [22:0]count;
 	reg [7:0]dval;
 	reg [9:0]dpack;
+	reg [9:0]leap;
+	reg [9:0]leapfreq;
 	
 	reg [3:0]S;
 	reg [3:0]NS;
@@ -27,10 +29,7 @@ module fade(
 		DVAL = 4'd2,
 		DVALGO = 4'd3,
 		WAITDVAL = 4'd4,
-		DPACK = 4'd5,
-		DPACKGO = 4'd6,
-		WAITDPACK = 4'd7,
-		PACKWAIT = 4'd8,
+		LEAP = 4'd5,
 		DONE = 4'd9;
 		
 	always@(posedge clk or negedge rst)
@@ -49,21 +48,20 @@ module fade(
 				NS = SHIFT;
 			
 			SHIFT:
-			begin
 				if(t==0)
 					NS = DONE;
 				else
-				begin
-					if(t<=s)
-						NS = DVAL;
-					else
-						NS = DPACK;
-				end
-			end
+					NS = DVAL;
 			
 			DVAL: NS = DVALGO;
 			
-			DVALGO: NS = WAITDVAL;
+			DVALGO: 
+			if(leap<leapfreq)
+				NS = WAITDVAL;
+			else
+				NS = LEAP;
+			
+			LEAP: NS = WAITDVAL;
 			
 			WAITDVAL:
 			begin
@@ -77,30 +75,6 @@ module fade(
 						NS = DONE;
 				end
 			end
-			
-			DPACK: NS = DPACKGO;
-			
-			DPACKGO: NS = WAITDPACK;
-			
-			WAITDPACK:
-			begin
-				if(count<5000000)
-					NS = WAITDPACK;
-				else
-				begin
-					if(pw<dpack)
-						NS = PACKWAIT;
-					else
-					begin
-						if(newM>n)
-							NS = DPACKGO;
-						else
-							NS = DONE;
-					end
-				end
-			end
-			
-			PACKWAIT: NS = WAITDPACK;
 			
 			DONE:
 			if(start==1'b0)
@@ -123,6 +97,8 @@ module fade(
 			dpack <= 10'd0;
 			newM <= 0;
 			done <= 1'b0;
+			leap <= 10'd0;
+			leapfreq <= 10'd0;
 		end
 		else
 		case(S)
@@ -136,39 +112,56 @@ module fade(
 				dpack <= 10'd0;
 				newM <= c;
 				done <= 1'b0;
+				leap <= 10'd0;
+				leapfreq <= 10'd0;
 				s <= c-n;
 			end
 			
 //			SHIFT: 
 			
-			DVAL: dval <= s/t;
+			DVAL: 
+			begin
+				dval <= s/t;
+				if(s%t>0)
+					leapfreq <= t/(s%t);
+				else
+					leapfreq <= 10'b1111111111;
+			end
 			
 			DVALGO:
 			begin
 				newM <= newM - dval;
 				count <= 23'd0;
 				tp <= tp+1'b1;
+				leap <= leap+1'b1;
+			end
+			
+			LEAP:
+			begin
+				newM <= newM -1;
+				leap <= 0;
 			end
 			
 			WAITDVAL: count <= count+1'b1;
 			
-			DPACK: dpack <= t/s;
 			
-			DPACKGO:
-			begin
-				newM <= newM - 1'b1;
-				count <= 23'd0;
-				pw <= 10'd0;
-				tp <= tp+1'b1;
-			end
-			
-			WAITDPACK: count <= count+1'b1;
-			
-			PACKWAIT:
-			begin
-				count <= 23'd0;
-				pw <= pw+1'b1;
-			end
+//			DPACK: dpack <= t/s;
+//			
+//			DPACKGO:
+//			begin
+//				newM <= newM - 1'b1;
+//				count <= 23'd0;
+//				pw <= 10'd0;
+//				tp <= tp+1'b1;
+//			end
+//			
+//			WAITDPACK: count <= count+1'b1;
+//			
+//			PACKWAIT:
+//			begin
+//				count <= 23'd0;
+//				pw <= pw+1'b1;
+//			end
 			
 			DONE: 
 			begin
