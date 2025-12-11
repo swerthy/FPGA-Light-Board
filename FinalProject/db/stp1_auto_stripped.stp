@@ -65,15 +65,15 @@
       </trigger>
     </signal_set>
     <position_info>
-      <single attribute="active tab" value="1"/>
-      <single attribute="data horizontal scroll position" value="0"/>
+      <single attribute="active tab" value="0"/>
+      <single attribute="data horizontal scroll position" value="18478"/>
       <single attribute="data vertical scroll position" value="0"/>
       <single attribute="setup horizontal scroll position" value="0"/>
       <single attribute="setup vertical scroll position" value="0"/>
-      <single attribute="zoom level denominator" value="1024"/>
+      <single attribute="zoom level denominator" value="512"/>
       <single attribute="zoom level numerator" value="1"/>
       <single attribute="zoom offset denominator" value="1"/>
-      <single attribute="zoom offset numerator" value="134086656"/>
+      <single attribute="zoom offset numerator" value="67043328"/>
     </position_info>
   </instance>
   <mnemonics/>

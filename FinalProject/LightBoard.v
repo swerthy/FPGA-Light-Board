@@ -205,10 +205,10 @@ module LightBoard(
 			DEFSHIFT: NS = FADEWAIT;
 			
 			FADEWAIT: 
-			if(faded[0]&faded[1]&faded[2]&faded[3]&faded[4]==1'b1)
-				NS = FADEWAIT;
-			else
+			if(faded[0]==1)
 				NS = FADEDONE;
+			else
+				NS = FADEWAIT;
 				
 			FADEDONE: NS = HOME;
 			

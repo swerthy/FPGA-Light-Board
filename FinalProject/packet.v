@@ -69,8 +69,6 @@ module packet(
 			
 			RESET: NS = BREAK;
 			
-			// BUG
-			default: NS = START;
 			
 		endcase
 
@@ -79,7 +77,7 @@ module packet(
 	begin
 			count <= 0;
 			bitcount <= 0;
-			sends <= 0;
+			sends <= data;
 			pos <= 0;
 			done <= 0;
 	end
@@ -115,8 +113,8 @@ module packet(
 			
 			NEXT: 
 			begin
-				//sends <= sends/2;
-				sends <= sends >> 1;
+				sends <= sends/2;
+				//sends <= sends >> 1;
 				bitcount <= 0;
 			end
 			

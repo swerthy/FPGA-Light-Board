@@ -71,7 +71,7 @@ module fade(
 					NS = WAITDVAL;
 				else
 				begin
-					if(tp<t)
+					if((n+dval)<newM)
 						NS = DVALGO;
 					else
 						NS = DONE;
@@ -92,7 +92,7 @@ module fade(
 						NS = PACKWAIT;
 					else
 					begin
-						if(tp<s)
+						if(newM>n)
 							NS = DPACKGO;
 						else
 							NS = DONE;
@@ -136,9 +136,10 @@ module fade(
 				dpack <= 10'd0;
 				newM <= c;
 				done <= 1'b0;
+				s <= c-n;
 			end
 			
-			SHIFT: s <= c-n;
+//			SHIFT: 
 			
 			DVAL: dval <= s/t;
 			
