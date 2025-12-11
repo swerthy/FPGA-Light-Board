@@ -144,25 +144,6 @@ module fade(
 			
 			WAITDVAL: count <= count+1'b1;
 			
-			
-//			DPACK: dpack <= t/s;
-//			
-//			DPACKGO:
-//			begin
-//				newM <= newM - 1'b1;
-//				count <= 23'd0;
-//				pw <= 10'd0;
-//				tp <= tp+1'b1;
-//			end
-//			
-//			WAITDPACK: count <= count+1'b1;
-//			
-//			PACKWAIT:
-//			begin
-//				count <= 23'd0;
-//				pw <= pw+1'b1;
-//			end
-			
 			DONE: 
 			begin
 				newM <= n;
