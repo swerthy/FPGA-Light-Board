@@ -13,6 +13,12 @@ module packet(
 	reg [7:0]bitcount;
 	reg [5642:0]sends;
 
+	reg [9:0]bit_counter; // counter for singal tap
+	// add as a node, this will be used to stop at the 5th byte
+	// just need to scroll until value changes from 54 to 55
+	// as 55 is the end of the 5th byte
+	// sample depth must be 16k
+
 	reg [2:0]S;
 	reg [2:0]NS;
 
@@ -96,6 +102,7 @@ module packet(
 				count <= 0;
 				sends <= data;
 				pos <= 0;
+				bit_counter <= 0; // added
 			end
 			
 			MARK:
@@ -116,6 +123,7 @@ module packet(
 				sends <= sends/2;
 				//sends <= sends >> 1;
 				bitcount <= 0;
+				bit_counter <= bit_counter+1; // added
 			end
 			
 			WAIT: 
