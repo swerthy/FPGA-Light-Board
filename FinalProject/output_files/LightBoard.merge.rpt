@@ -1,5 +1,5 @@
 Partition Merge report for LightBoard
-Thu Dec 11 11:26:02 2025
+Thu Dec 11 12:30:55 2025
 Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
@@ -41,13 +41,13 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Partition Merge Summary                                                          ;
 +---------------------------------+------------------------------------------------+
-; Partition Merge Status          ; Successful - Thu Dec 11 11:26:02 2025          ;
+; Partition Merge Status          ; Successful - Thu Dec 11 12:30:55 2025          ;
 ; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
 ; Revision Name                   ; LightBoard                                     ;
 ; Top-level Entity Name           ; LightBoard                                     ;
 ; Family                          ; Cyclone V                                      ;
 ; Logic utilization (in ALMs)     ; N/A                                            ;
-; Total registers                 ; 7032                                           ;
+; Total registers                 ; 7034                                           ;
 ; Total pins                      ; 46                                             ;
 ; Total virtual pins              ; 0                                              ;
 ; Total block memory bits         ; 262,144                                        ;
@@ -98,8 +98,8 @@ https://fpgasoftware.intel.com/eula.
 ; auto_signaltap_0|gnd      ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~GND ; N/A     ;
 ; auto_signaltap_0|gnd      ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~GND ; N/A     ;
 ; auto_signaltap_0|gnd      ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~GND ; N/A     ;
-; auto_signaltap_0|vcc      ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC ; N/A     ;
-; auto_signaltap_0|vcc      ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC ; N/A     ;
+; auto_signaltap_0|gnd      ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~GND ; N/A     ;
+; auto_signaltap_0|gnd      ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~GND ; N/A     ;
 ; auto_signaltap_0|vcc      ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC ; N/A     ;
 ; auto_signaltap_0|vcc      ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC ; N/A     ;
 ; auto_signaltap_0|vcc      ; post-fitting  ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC ; N/A     ;
@@ -123,19 +123,19 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-------+------------------+--------------------------------+--------------------------------+
 ; Statistic                                   ; Top   ; sld_hub:auto_hub ; sld_signaltap:auto_signaltap_0 ; hard_block:auto_generated_inst ;
 +---------------------------------------------+-------+------------------+--------------------------------+--------------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 7870  ; 63               ; 311                            ; 0                              ;
+; Estimate of Logic utilization (ALMs needed) ; 7866  ; 63               ; 311                            ; 0                              ;
 ;                                             ;       ;                  ;                                ;                                ;
-; Combinational ALUT usage for logic          ; 15610 ; 91               ; 294                            ; 0                              ;
-;     -- 7 input functions                    ; 1     ; 1                ; 0                              ; 0                              ;
-;     -- 6 input functions                    ; 1173  ; 11               ; 64                             ; 0                              ;
-;     -- 5 input functions                    ; 1040  ; 25               ; 64                             ; 0                              ;
-;     -- 4 input functions                    ; 12118 ; 17               ; 20                             ; 0                              ;
-;     -- <=3 input functions                  ; 1278  ; 37               ; 146                            ; 0                              ;
+; Combinational ALUT usage for logic          ; 15574 ; 91               ; 294                            ; 0                              ;
+;     -- 7 input functions                    ; 2     ; 1                ; 0                              ; 0                              ;
+;     -- 6 input functions                    ; 1187  ; 11               ; 64                             ; 0                              ;
+;     -- 5 input functions                    ; 1028  ; 25               ; 64                             ; 0                              ;
+;     -- 4 input functions                    ; 12117 ; 17               ; 20                             ; 0                              ;
+;     -- <=3 input functions                  ; 1240  ; 37               ; 146                            ; 0                              ;
 ; Memory ALUT usage                           ; 0     ; 0                ; 0                              ; 0                              ;
 ;     -- 64-address deep                      ; 0     ; 0                ; 0                              ; 0                              ;
 ;     -- 32-address deep                      ; 0     ; 0                ; 0                              ; 0                              ;
 ;                                             ;       ;                  ;                                ;                                ;
-; Dedicated logic registers                   ; 6453  ; 90               ; 489                            ; 0                              ;
+; Dedicated logic registers                   ; 6455  ; 90               ; 489                            ; 0                              ;
 ;                                             ;       ;                  ;                                ;                                ;
 ;                                             ;       ;                  ;                                ;                                ;
 ; I/O pins                                    ; 46    ; 0                ; 0                              ; 0                              ;
@@ -151,8 +151,8 @@ https://fpgasoftware.intel.com/eula.
 ;     -- Registered Output Connections        ; 4     ; 283              ; 0                              ; 0                              ;
 ;                                             ;       ;                  ;                                ;                                ;
 ; Internal Connections                        ;       ;                  ;                                ;                                ;
-;     -- Total Connections                    ; 90195 ; 926              ; 4040                           ; 431                            ;
-;     -- Registered Connections               ; 26460 ; 746              ; 2578                           ; 0                              ;
+;     -- Total Connections                    ; 90093 ; 926              ; 4040                           ; 431                            ;
+;     -- Registered Connections               ; 26578 ; 746              ; 2578                           ; 0                              ;
 ;                                             ;       ;                  ;                                ;                                ;
 ; External Connections                        ;       ;                  ;                                ;                                ;
 ;     -- Top                                  ; 0     ; 0                ; 262                            ; 0                              ;
@@ -170,9 +170,9 @@ https://fpgasoftware.intel.com/eula.
 ;     -- Registered Output Ports              ; 0     ; 29               ; 5                              ; 0                              ;
 ;                                             ;       ;                  ;                                ;                                ;
 ; Port Connectivity                           ;       ;                  ;                                ;                                ;
-;     -- Input Ports driven by GND            ; 0     ; 0                ; 17                             ; 0                              ;
+;     -- Input Ports driven by GND            ; 0     ; 0                ; 19                             ; 0                              ;
 ;     -- Output Ports driven by GND           ; 0     ; 28               ; 2                              ; 0                              ;
-;     -- Input Ports driven by VCC            ; 0     ; 0                ; 15                             ; 0                              ;
+;     -- Input Ports driven by VCC            ; 0     ; 0                ; 13                             ; 0                              ;
 ;     -- Output Ports driven by VCC           ; 0     ; 0                ; 1                              ; 0                              ;
 ;     -- Input Ports with no Source           ; 0     ; 25               ; 6                              ; 0                              ;
 ;     -- Output Ports with no Source          ; 0     ; 0                ; 0                              ; 0                              ;
@@ -395,16 +395,16 @@ Note: Resource usage numbers presented for Partitions containing post-synthesis 
 +---------------------------------------------+--------------+
 ; Resource                                    ; Usage        ;
 +---------------------------------------------+--------------+
-; Estimate of Logic utilization (ALMs needed) ; 8712         ;
+; Estimate of Logic utilization (ALMs needed) ; 8704         ;
 ;                                             ;              ;
-; Combinational ALUT usage for logic          ; 15995        ;
-;     -- 7 input functions                    ; 2            ;
-;     -- 6 input functions                    ; 1248         ;
-;     -- 5 input functions                    ; 1129         ;
-;     -- 4 input functions                    ; 12155        ;
-;     -- <=3 input functions                  ; 1461         ;
+; Combinational ALUT usage for logic          ; 15959        ;
+;     -- 7 input functions                    ; 3            ;
+;     -- 6 input functions                    ; 1262         ;
+;     -- 5 input functions                    ; 1117         ;
+;     -- 4 input functions                    ; 12154        ;
+;     -- <=3 input functions                  ; 1423         ;
 ;                                             ;              ;
-; Dedicated logic registers                   ; 7032         ;
+; Dedicated logic registers                   ; 7034         ;
 ;                                             ;              ;
 ; I/O pins                                    ; 46           ;
 ; Total MLAB memory bits                      ; 0            ;
@@ -413,8 +413,8 @@ Note: Resource usage numbers presented for Partitions containing post-synthesis 
 ; Total DSP Blocks                            ; 0            ;
 ;                                             ;              ;
 ; Maximum fan-out node                        ; KEY[0]~input ;
-; Maximum fan-out                             ; 12080        ;
-; Total fan-out                               ; 94472        ;
+; Maximum fan-out                             ; 12082        ;
+; Total fan-out                               ; 94372        ;
 ; Average fan-out                             ; 4.08         ;
 +---------------------------------------------+--------------+
 
@@ -434,7 +434,7 @@ Note: Resource usage numbers presented for Partitions containing post-synthesis 
 Info: *******************************************************************
 Info: Running Quartus Prime Partition Merge
     Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
-    Info: Processing started: Thu Dec 11 11:26:00 2025
+    Info: Processing started: Thu Dec 11 12:30:52 2025
 Info: Command: quartus_cdb --read_settings_files=off --write_settings_files=off LightBoard -c LightBoard --merge=on
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (35007): Using synthesis netlist for partition "Top"
@@ -448,15 +448,15 @@ Critical Warning (138067): Current license file does not support incremental com
 Warning (21074): Design contains 2 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "KEY[1]" File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/LightBoard.v Line: 4
     Warning (15610): No output dependent on input pin "KEY[2]" File: M:/ECE287/GitHub/FPGA-Light-Board/FinalProject/LightBoard.v Line: 4
-Info (21057): Implemented 16739 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 16699 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 18 input pins
     Info (21059): Implemented 32 output pins
-    Info (21061): Implemented 16656 logic cells
+    Info (21061): Implemented 16616 logic cells
     Info (21064): Implemented 32 RAM segments
 Info: Quartus Prime Partition Merge was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 4816 megabytes
-    Info: Processing ended: Thu Dec 11 11:26:03 2025
-    Info: Elapsed time: 00:00:03
+    Info: Peak virtual memory: 4824 megabytes
+    Info: Processing ended: Thu Dec 11 12:30:56 2025
+    Info: Elapsed time: 00:00:04
     Info: Total CPU time (on all processors): 00:00:01
 
 

@@ -87,7 +87,6 @@ module LightBoard(
 		FADEDONE=5'd19,//All addresses faded
 		//Other
 		INIT=5'd31,		//Initialize system
-		INIT2=5'd30,	//Initialize
 		ERROR=5'hff;	//Error state
 		
 		
@@ -100,9 +99,7 @@ module LightBoard(
 	always@(*)
 		case(S)
 			
-			INIT: NS = INIT2;
-			
-			INIT2: NS=HOME;
+			INIT: NS = HOME;
 			
 			HOME:
 			begin
@@ -208,7 +205,7 @@ module LightBoard(
 			DEFSHIFT: NS = FADEWAIT;
 			
 			FADEWAIT: 
-			if(faded[0]==1)
+			if((faded[0]==1)&(faded[1]==1)&(faded[2]==1)&(faded[3]==1)&(faded[4]==1))
 				NS = FADEDONE;
 			else
 				NS = FADEWAIT;
@@ -223,7 +220,7 @@ module LightBoard(
 		if(rst==1'b0)
 		begin
 			addr <= 0;
-			data <= 0;
+			data <= bo;
 			q0 <= 0;
 			q1 <= 0;
 			q2 <= 0;
@@ -256,8 +253,6 @@ module LightBoard(
 				t4 <= 10'd0;	
 				qstack <= 5'b00000;
 			end
-			
-			INIT2: data <= bo;
 			
 //			HOME: 
 		
