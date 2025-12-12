@@ -72,7 +72,7 @@ A state diagram of the process can be seen in figure III-4 below.  The same assu
 ![State Diagram for Fade Algorithm](Figure_III-4.png)
 Note that the leapfreq calculation will only be done if the remainder does not equal zero.  If it does, the leap frequency variable is made as large as possible which eliminates the possibility of the leap ever occurring for that fade.  Also note that the “DONE” state can only reset to the “START” state once the start signal is turned off, and that in figure III-3, though not explicitly shown, the “FADEWAIT” state can only progress to the “FADEDONE” state when all fade modules output a high “done” bit, and that the start bit for all fade modules is only turned low once the top level control module proceeds to the “FADEDONE” state.  This avoids any possibility of the system advancing before a fade is fully complete.
 
-For a demonstration of several address fades occurring at once within the packet signal, see the video linked [here](https://youtu.be/9XPXB9ixPZg?si=M2DyAFkIymhKrx6g).  For a demonstration of a single address fade occurring within the packet signal, as well as numerically, see the video linked in the “System Control” subsection.
+For a demonstration of several address fades occurring at once within the packet signal, see the video linked [here](https://youtu.be/qqqtkZN1Sgc).  For a demonstration of a single address fade occurring within the packet signal, as well as numerically, see the video linked in the “System Control” subsection.
 
 ## Section IV - Possible Improvements
 While the current project is capable of sending a full universe of 512 addresses, the modification and entry tools only function for the first five addresses.  This could be expanded to accommodate up to 511 addresses using a simple script generator, some samples of which can be found [here], although they drastically increase the computational requirements of the system.  The method could be condensed by instead calling to, modifying, and storing variable addresses within a memory file, although this version uses only registers.
@@ -88,6 +88,7 @@ The project successfully demonstrated the logic required to implement a DMX512 c
 While the logic was implemented correctly, there are specific limitations and areas for future improvement as discussed in Section IV.
 
 ## Section VI - References and Resources
+
 
 
 
