@@ -22,11 +22,9 @@ Below in figure III-1 is a state diagram for the packet send algorithm, and show
 
 ![State Diagram for the Packet Sending Module](Figure_III-1.png)
 
-
 The resulting output signal was captured in a signal tap simulation below in figure III-2.  The time scales from left to right in increments of 0.02 microseconds.  Note that DMX protocol sends and receives bits from least to most significant, so unlike how an array is written, the sent data is reversed (last in, first out).  Each phase of the cycle is labeled in the figure, including the end of the wait cycle from the previous bit.  The recorded values of the first three addresses are also labeled and visible in the data signal.  Address four and onward are all zero.
 
 ![Signal Tap Capture of the Beginning of the Packet Send](Figure_III-2.png)
-
 
 ### System Control -
 The board is controlled by switch and key inputs.  The switches are used for all data entry and selection, and the keys are used for confirming selections.  The control system itself is a finite state machine that idles in a home state, and can proceed to four different control processes depending on the state of switches zero and one when the data entry is confirmed.  The four functionalities are recording an address value, recording a cue, restoring a cue, and fading to the next cue.  This procedure can be visualized below in figure III-3 which represents the state diagram for the top-level control module.  The same assumptions made for the packet diagram can be made here.
@@ -70,6 +68,7 @@ As an example, take an initial value of 250 and a final value of 0 over the cour
 A state diagram of the process can be seen in figure III-4 below.  The same assumptions made for other diagrams remain true.  
 
 ![State Diagram for Fade Algorithm](Figure_III-4.png)
+
 Note that the leapfreq calculation will only be done if the remainder does not equal zero.  If it does, the leap frequency variable is made as large as possible which eliminates the possibility of the leap ever occurring for that fade.  Also note that the “DONE” state can only reset to the “START” state once the start signal is turned off, and that in figure III-3, though not explicitly shown, the “FADEWAIT” state can only progress to the “FADEDONE” state when all fade modules output a high “done” bit, and that the start bit for all fade modules is only turned low once the top level control module proceeds to the “FADEDONE” state.  This avoids any possibility of the system advancing before a fade is fully complete.
 
 For a demonstration of several address fades occurring at once within the packet signal, see the video linked [here](https://youtu.be/qqqtkZN1Sgc).  For a demonstration of a single address fade occurring within the packet signal, as well as numerically, see the video linked in the “System Control” subsection.
@@ -88,6 +87,7 @@ The project successfully demonstrated the logic required to implement a DMX512 c
 While the logic was implemented correctly, there are specific limitations and areas for future improvement as discussed in Section IV.
 
 ## Section VI - References and Resources
+
 
 
 
