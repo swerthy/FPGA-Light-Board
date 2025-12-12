@@ -38,17 +38,21 @@ Most states are implemented twice in order to account for the length of a human 
 _Miscellaneous Operational States_
 - HOME: No functionality other than being an idle state.
 - INIT: Set initial parameters for temporary and output variables.
+  
 _Recording an address value_
 - ADDR: Select the address to be modified (1 to 511).  Values are confirmed upon the next “enter” press.
 - VAL: Select the value to be assigned to the chosen address (0 to 255).  Values are confirmed upon the next “enter” press.
 - RECA: Address value is stored in the data array.
+  
 _Recording a Cue_
 - QNUM: Select the cue number to which the current data array will be written (0 to 4).  Values are confirmed upon the next “enter” press.
 - TIME: Select the amount of time a fade into this cue should take (0 to 1023).  Note that this value is in tenths of a second.  Values are confirmed upon the next “enter” press.
 - RECQ: The current data array is stored in an array corresponding to the selected cue, and an indicator turns on to confirm that a cue has been written in this cue slot.
+  
 _Restoring a Cue_
 - QGO: Select the cue data to be restored (0 to 4).  Values are confirmed upon the next “enter” press.
 - SET: The data array is set equal to the corresponding cue array.  If no cue is recorded, the restored data will be the same as an empty data array.
+  
 _Fading to Next Cue_
 - DEFSHIFT: Determines the next written cue and defines the parameters for the fade of each address, the fade time for that cue, and sends a high signal to the fade algorithm start bit.
 - FADEWAIT: System sets data equal to the data outputted from the fade module (discussed in the following subsection).
@@ -84,6 +88,7 @@ The project successfully demonstrated the logic required to implement a DMX512 c
 While the logic was implemented correctly, there are specific limitations and areas for future improvement as discussed in Section IV.
 
 ## Section VI - References and Resources
+
 
 
 
