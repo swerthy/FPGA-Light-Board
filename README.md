@@ -20,11 +20,12 @@ Packets are sent using a timing module that ensures that delays and output level
 
 Below in figure III-1 is a state diagram for the packet send algorithm, and shows the output signal in each state.  Note that state transitions are clocked with a 50 MHz clock, and it can be assumed that in any case where a state does not meet the listed transition requirement, the state progresses to itself.  Also note that not all counters are notated, but they can be assumed to exist.
 
-![State Diagram for the Packet Sending Module](Figure_III-1)
+![State Diagram for the Packet Sending Module](Figure_III-1.png)
 
 Figure III-1 - State Diagram for the Packet Sending Module
 
 The resulting output signal was captured in a signal tap simulation below in figure III-2.  The time scales from left to right in increments of 0.02 microseconds.  Note that DMX protocol sends and receives bits from least to most significant, so unlike how an array is written, the sent data is reversed (last in, first out).  Each phase of the cycle is labeled in the figure, including the end of the wait cycle from the previous bit.  The recorded values of the first three addresses are also labeled and visible in the data signal.  Address four and onward are all zero.
+
 
 
 
