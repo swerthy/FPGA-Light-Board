@@ -9,7 +9,7 @@ Authors: Marissa Shewmaker, Shane Werthaiser</b>
 
 ## <b>Section II - Background Information</b>
 
-[put text here]
+DMX512 (Digital Multiplex) is the standard protocol used for controlling stage lighting and effects. A single DMX “universe” consists of a packet of 512 bytes of information. The standard structure of the packet begins with a “break” and a “mark-after-break,” which is then followed by up to 512 frames of data. In each data frame, there consists of a start bit (low), eight data bits (representing a value from 0 to 255), and two stop bits (high). DMX protocol requires the least significant bit (LSB) to be first. 
 
 ## Section III - Design Description
 
@@ -22,10 +22,15 @@ Below in figure III-1 is a state diagram for the packet send algorithm, and show
 
 ![State Diagram for the Packet Sending Module](Figure_III-1.png)
 
-Figure III-1 - State Diagram for the Packet Sending Module
 
 The resulting output signal was captured in a signal tap simulation below in figure III-2.  The time scales from left to right in increments of 0.02 microseconds.  Note that DMX protocol sends and receives bits from least to most significant, so unlike how an array is written, the sent data is reversed (last in, first out).  Each phase of the cycle is labeled in the figure, including the end of the wait cycle from the previous bit.  The recorded values of the first three addresses are also labeled and visible in the data signal.  Address four and onward are all zero.
 
+![Signal Tap Capture of the Beginning of the Packet Send](Figure_III-2.png)
 
 
+### System Control -
+The board is controlled by switch and key inputs.  The switches are used for all data entry and selection, and the keys are used for confirming selections.  The control system itself is a finite state machine that idles in a home state, and can proceed to four different control processes depending on the state of switches zero and one when the data entry is confirmed.  The four functionalities are recording an address value, recording a cue, restoring a cue, and fading to the next cue.  This procedure can be visualized below in figure III-3 which represents the state diagram for the top-level control module.  The same assumptions made for the packet diagram can be made here.
 
+![State Diagram for Top Level Control Module](Figure_III-3.png)
+
+Most states are implemented twice in order to account for the length of a human button press.  A list of the individual state functionalities are below.  Assume that any state listed as “STATEX” has the same functionality as STATE and serves only as a buffer unless noted otherwise.
